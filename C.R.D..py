@@ -112,7 +112,7 @@ async def on_ready():
 crdbot.remove_command("help")
     
 #darksky API stuff
-key = "217d340e838a283a43e6084d1a59af0f"
+key = darkskykey
 units = ["uk2"]
 #end of that
 
