@@ -1,0 +1,130 @@
+shipname,filename,description
+drone11,11.json,The Veniri drone. Equipped with a Small Pulse Cannon.
+drone21,21.json,"The Bushrak's first drone, fit with a Small Laser."
+drone22,22.json,The Bushrak's second drone. Carries a Small Statis Field.
+drone31,31.json,The Korerans' torpedo drone. Carries a Small Proton Torpedo.
+drone41,41.json,"The Taraniak drone. Equipped with a Small Lightning Cannon. When this drone dies, it releases a damaging cloud."
+drone51,51.json,The Sayjix drone. Carries a Small Plasma Cannon.
+drone81,81.json,"The Unknown's drone. Carries a Small Repair Ray, which can damage enemies and heal the user's ship."
+drone91,91.json,The Scavenger drone. Has 112 hitpoints and a Pulse Cannon M2.
+dronea1,a1.json,The Daazen drone. Carries an Energy Siphon.
+colossus,Boss0.json,"The Capital Ship of Zumbalari. Has many weapon slots of different types, including M and C slots. Four of its five C slots have built in Targeting Units, and the ship also has 50% kinetic resistance and 33% heat and energy resistance."
+leviathan,Boss1.json,"The Capital Ship of Veniri. The ship suffers from poor firepower, but does have a decent number of green and blue slots. It is most useful as a drone carrier, or an interceptor with Hovertanks - but most other capital ships can easily overpower it."
+megalodon,Boss2.json,"The Bushrak Capital Ship. Packs many M slots, many of which are also MT or LM. Can be used as a very effective cloak and dagger ship or a missile sniper. For a long time, this ship also had the greatest amount of red slots of any ship."
+thor,Boss3.json,"The Korerans' Capital Ship. The Thor is the only Korerans ship that cannot mount torpedoes without Glaive sattelites, but is instead best known as a powerful drone carrier. The ship itself is slow, with only 18 engine slots."
+kraken,Boss4.json,"The Taraniak Capital Ship. As expected from Taraniak the ship is living - regenerating 1% of its HP per second, and it can wield both L and S weapons. The S slots in the middle hold a Heavy Antimatter Bomb M2 by default, and the SL slots at the front have a 180° built in Targeting Unit."
+oracle,Boss5.json,"The Sayjix Capital Ship. Being a Sayjix ship, it features a 360° turret - with CL slots. Its CL slots can hold many weapons, including Heavy Ion Cannons, Holy Cannons, Death Rays and Tachyon Beams. It is most well known as a sentry ship."
+overlord,Boss6.json,"The Jurgans' Capital Ship. As expected from the Jurgans the ship is living, regenerating 1% of its HP per second. The ship resembles a Megalodon, but with some sort of infection. It has less weaponry than the Megalodon, but what it loses in firepower it makes up for in versatility. It can mount Lasers, Torpedoes and Cannons. For example, when expanded it can mount four Heavy Ion Cannons and a Heavy Laser."
+zeus,Boss7.json,"The Neganari Capital Ship. Features a 180° TU L slot in its middle, capable of holding a Heavy Laser Beam (or when expanded, a Death Ray). It also has two 2x3 M slots. The ship also features a large amount of engine slots and green slots, allowing it to become a very fast ship."
+doomstar,Boss8.json,"The Unknown Capital Ship. Has a 3x5 L slot which is locked with a Death Ray, also with a 30° Targeting Unit mount. The ship can also mount twenty four drones."
+dreadnought,Boss9.json,
+jormungand,Boss13.json,
+harbour,Boss15.json,
+tartarus,Bossa.json,
+chariot,Bossn.json,
+interceptor,f0s1.json,
+interceptor mk2,f0s1_mk2.json,
+shadow,f0s2.json,
+helios,f0s3.json,
+rhino,f0s4.json,
+scout,f1s1.json,some text
+scout mk2,f1s1_mk2.json,
+paladin,f1s2.json,
+javelin,f1s3.json,
+excalibur,f1s4.json,
+dart,f1s5.json,
+spectrum,f2s1.json,
+spectrum mk2,f2s1_mk2,
+zephyr,f2s2.json,
+zion,f2s3.json,
+stalker,f2s4.json,
+trident,f2s5.json,
+raven,f3s1.json,
+raven mk2,f3s1_mk2.json,
+praetor,f3s2.json,
+thunder,f3s3.json,
+manticore,f3s4.json,
+drone,f4s1.json,
+drone mk2,f4s1_mk2.json,
+dragonfly,f4s2.json,
+hornet,f4s3.json,
+tarantula,f4s4.json,
+messenger,f5s1.json,
+messenger mk2,f5s1_mk2.json,
+kryptoria,f5s2.json,
+proxima,f5s3.json,
+chronos,f5s4.json,
+embryo,f6s1.json,
+embryo mk2,f6s1_mk2.json,
+chrysalis,f6s2.json,
+oblivion,f6s3.json,
+beholder,f6s4.json,
+zombie,f6s5.json,
+spike,f7s1.json,
+spike mk2,f7s1_mk2.json,
+probe,f7s2.json,
+hatchet,f7s3.json,
+freighter,f7s4.json,
+object 34,f8s1.json,
+object 18,f8s2.json,
+object 61,f8s3.json,
+object 117,f8s4.json,
+iss corvette,f9s1.json,
+iss gunboat,f9s2.json,
+iss caravel,f9s3.json,
+iss galleon,f9s4.json,
+iss man-of-war,f9s5.json,
+bug,f12s1.json,
+crab,f12s3.json,
+banshee,f13s1.json,
+valkyrie,f13s2.json,
+goblin,f13s3.json,
+yeti,f13s4.json,
+velez,f14s1.json,
+rattletrap destroyer,f15s1.json,
+rattletrap cruiser,f15s2.json,
+rattletrap battleship,f15s3.json,
+barracuda,fas1.json,
+scorpio,fas2.json,
+leech,fas3.json,
+leech mk2,fas3_mk2.json,
+nemesis,fas4.json,
+corn,fns10.json,
+falcon,fns2.json,
+egg,fns3.json,
+easter egg,fns3_mk2.json,
+viper,fns4.json,
+tyrant,fns5.json,
+eden,fns6.json,
+gladius,fns7.json,
+meteor,fns8.json,
+scavenger,fns9.json,
+invader1,invader1.json,
+invader2,invader2.json,
+invader3,invader3.json,
+merchant,merchant.json,
+mothership,mothership.json,
+myinvader,myinvader.json,
+drones1,s1.json,
+salvage drone,salvage drone.json,
+santa,santa.json,
+santa drone,santa_drone.json,
+smuggler,smuggler.json,
+starbase,starbase.json,
+wormship,worm.json,
+capital wormship,worm_boss.json,
+MODDED SHIPS BELOW THIS LINE,,
+abaddon,ModdedShips/Abaddon_Ship.json,"A ship added in Crdguy's Abaddon mod. An agile Battleship with many weapon slots, but very small. The ship is best used with weapons like the Firework Cannon."
+stresstest,ModdedShips/stresstest.json,A ship created by Juh to stress test algorithms such as this one.
+providence,ModdedShips/Providence.json,
+imperium,ModdedShips/Imperium.json,
+e-7 guardian,ModdedShips/E-7_Guardian_Ship.json,A cruiser designed to carry the Longsword Cannon with protection in mind at the cost of speed capabilities.
+e-13 interceptor,ModdedShips/E-13_Interceptor_Ship.json,A smaller frigate equiped with 2 T weapon slots capable of reaching high speeds with low protection and few green slots.
+e-23 gunship,ModdedShips/E-23_Gunship_Build_Ship.json,As Capital ship of Armada this ship provides space for 4 Holy Canons to cover its sides. It has an excellent amount of blue and green slots but lacks engine slots.
+hy-16,ModdedShips/HY-16_Ship.json,A small and versatile missle frigate which relies on speed to take out targets.
+hy-17,ModdedShips/HY-17.json,A strong battleship with lots of engine and weapon slots. (Noodle's Favorite)
+hy-22-85,ModdedShips/HY-22-85_Ship.json,This destroyer is designed to use the Artillery which comes at the cost of speed and energy.
+hy-24-b,ModdedShips/HY-24-B.json,"As the second battleship of Armada the HY-24-B has 4 very dangerous frontal targeting weapon slots that become very strong when expanded. Further, it gives lots of blue slots at the cost of green slots."
+sb-4l,ModdedShips/SB-4L_Ship.json,The starbase of Armada has been fitted with an expanded core to be able to have some tricks up its sleeve.
+hxp-22-34,ModdedShips/HXP_Ship.json,"This smaller and unconventional capital ships fulfils its job as ""early game"" capital ship. The ability to carry 4 HMLM2's and the amount green slots makes it a better choice in comparison to battleships, while its worse than most capital class ships."
+astro nexus,ModdedShips/Astro_Nexus.json,"Ancient warrior of Sector XIII, Astro Nexus is a battleship that can be found in the Enigmata faction. It has two M-slot weapons on each arm, and two C-slot weapons on the front."
