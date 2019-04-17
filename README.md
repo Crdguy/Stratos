@@ -12,3 +12,15 @@ shiplookuptable.csv, techlookuptable.csv - Files that store information on the c
 Database - The most up to date version of the Event Horizon database.
 Tiles - Images used in the ";ehlookup" command. Do not alter these unless you know what you are doing.
 
+# Dependencies
+Stratos requires certain packages to be pre-installed in order to run.
+Currently, these packages are:
+
+`discord.py`
+`darksky`
+`geopy`
+`youtube_dl`
+`pillow`
+`glob`
+
+Other packages may be installed alongside the ones listed.
