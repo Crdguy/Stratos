@@ -1573,4 +1573,4 @@ async def on_message(message):
     await crdbot.process_commands(message) 
 
 #invite:        https://discordapp.com/api/oauth2/authorize?client_id=557309788480864256&permissions=1543957590&scope=bot
-crdbot.run("NTU3MzA5Nzg4NDgwODY0MjU2.D3GaxQ.-2EmAhs2esB8-AEoaZ9thhfqKFM")
+crdbot.run(token)
