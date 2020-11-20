@@ -28,7 +28,7 @@ class Userinfo(commands.Cog):
 
             try:
             #if True:
-                #identify a user by given ID, first checks the guild to see if the user is in the server and then tries an API call if not (working as of 11/11/2020)
+                #identify a user by given ID, first checks the guild to see if the user is in the server and then tries an API call if not (not working as of 20/11/2020)
                 print("attempting ID")
                 try:
                     t_user = ctx.guild.get_member(int(arg))
@@ -46,7 +46,7 @@ class Userinfo(commands.Cog):
                 pass
                 
             try:
-                #identify a user by mention, first checks the guild to see if the user is in it and then tries an API call if not
+                #identify a user by mention, first checks the guild to see if the user is in it and then tries an API call if not (not working as of 20/11/2020)
                 print("attempting mention")
                 argmember = int(arg[3:len(arg)-1])
                 print(argmember)
