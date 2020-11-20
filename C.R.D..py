@@ -80,9 +80,9 @@ except Exception:
     exit(0)
 
 #configure intents
-#I hate this, but it gives modularity
 intents = discord.Intents.default()
-intents.typing = False
+
+#I hate this, but it gives modularity
 intents.guilds = True
 intents.bans = True
 intents.emojis = True
