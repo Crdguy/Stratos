@@ -52,18 +52,24 @@ class Userinfo(commands.Cog):
                 print(argmember)
 
                 try:
-                    t_user = ctx.guild.get_member(argmember)
-                except:
-                    t_user = await self.crdbot.fetch_user(argmember)
                     
-                if t_user != None:
+                    t_user = ctx.guild.get_member(argmember)
+                    print("got")
+                    print(t_user)
+                except:
+                    
+                    t_user = await self.crdbot.fetch_user(argmember)
+                    print("got2")
+                    
+                if isinstance(t_user, discord.User):
+                    print("yea")
                     user = t_user
 
                 print(user)
             except:
                 pass
 
-            
+                
                 #arg1 = False
             #print(arg1)
             #if isinstance(arg1, discord.Member):
