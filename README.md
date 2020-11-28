@@ -13,19 +13,19 @@ Stratos is a Discord bot coded in Discord.py. It has various features, such as a
 `shiplookuptable.csv, techlookuptable.csv` - Files that store information on the current ships available in the ";ehlookup" command.
 
 # Subfolders
+**Assets** - Some images used in the `horizon` module.
+
 **Database** - The most up to date version of the Event Horizon database.
 
-**Tiles** - Images used in the ";ehlookup" command. Do not alter these unless you know what you are doing.
+**Funny EH Names** - .txts of various store descriptions for the game Event Horizon, for use with `;eh_description`.
+
+**ShipImages** - All of the images for the ships supported by `;ehlookup`.
+
+**Tiles** - Images used in the `;ehlookup` command. 
+
+**ext** - All of the extensions for Stratos.
 
 # Dependencies
 Stratos requires certain packages to be pre-installed in order to run.
-Currently, these packages are:
+See `C.R.D..py` for a list of modules.
 
-`discord.py`
-`darksky`
-`geopy`
-`youtube_dl`
-`pillow`
-`glob`
-
-Other packages may be installed alongside the ones listed.
