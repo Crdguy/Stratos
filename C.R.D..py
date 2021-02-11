@@ -79,6 +79,29 @@ except Exception:
     input("Error, something went wrong while parsing 'stratos.ini'. Ensure the file is not corrupt or missing.")
     exit(0)
 
+#configure intents
+intents = discord.Intents.default()
+
+#I hate this, but it gives modularity
+intents.guilds = True
+intents.bans = True
+intents.emojis = True
+intents.integrations = True
+intents.webhooks = True
+intents.invites = True
+intents.voice_states = False
+intents.presences = False
+intents.messages = True
+intents.guild_messages = True
+intents.dm_messages = True
+intents.reactions = True
+intents.guild_reactions = True
+intents.dm_reactions = True
+intents.typing = False
+intents.guild_typing = False
+intents.dm_typing = True
+
+
 #configure Crdbot
 try:
     Client = discord.Client()

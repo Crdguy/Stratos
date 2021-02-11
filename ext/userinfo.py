@@ -11,7 +11,6 @@ class Userinfo(commands.Cog):
         
     @commands.command()
     async def userinfo(self, ctx, *args):
-        print(args)
 
         channel = ctx.message.channel
         user = ctx.message.author
@@ -19,7 +18,7 @@ class Userinfo(commands.Cog):
         for arg in args:
 
             #oarg = arg
-            print(arg," input")
+            #print(arg," input")
             try:
                 #identify an argument as a channel (working as of 11/11/2020)
                 argchannel = int(arg[2:len(arg)-1])
@@ -28,60 +27,47 @@ class Userinfo(commands.Cog):
 
             try:
             #if True:
-                #identify a user by given ID, first checks the guild to see if the user is in the server and then tries an API call if not (not working as of 20/11/2020)
-                print("attempting ID")
+                #identify a user by given ID, first checks the guild to see if the user is in the server and then tries an API call if not (working as of 11/2/2020)
+       
                 try:
-                    t_user = ctx.message.guild.get_member(int(arg))
+                    t_user = await ctx.guild.fetch_member(int(arg))
+                    
                 except:
                     t_user = await self.crdbot.fetch_user(int(arg))
 
-
-                print("t_user is "+t_user)
                 if t_user != None:
                     user = t_user
-                print(user)
+  
                 
-            except:#Exception as e:
-                #print(e)
+            except:
                 pass
                 
             try:
                 #identify a user by mention, first checks the guild to see if the user is in it and then tries an API call if not (not working as of 20/11/2020)
-                print("attempting mention")
                 argmember = int(arg[3:len(arg)-1])
-                print(argmember)
 
                 try:
                     
-                    t_user = ctx.message.guild.get_member(argmember)
-                    print("got")
-                    print(t_user)
+                    t_user = await ctx.guild.fetch_member(argmember)
+                    
                 except:
                     
                     t_user = await self.crdbot.fetch_user(argmember)
-                    print("got2")
                     
-                if isinstance(t_user, discord.User):
-                    print("yea")
+                if isinstance(t_user, discord.Member):
                     user = t_user
 
-                print(user)
+                #print(t_user)
             except:
                 pass
 
-                
-                #arg1 = False
-            #print(arg1)
-            #if isinstance(arg1, discord.Member):
-                #print(arg1," is a member!")
-            #    user = arg1
-            print("user is: "+str(user))
-            t_channel = self.crdbot.get_channel(argchannel)
+            #print("user is: "+str(user))
+            t_channel = ctx.guild.get_channel(argchannel)
             if isinstance(t_channel, discord.TextChannel):
                 channel = t_channel
 
-        print("channel:{}".format(channel))
-        print("member:{}".format(user))
+        #print("channel:{}".format(channel))
+        #print("member:{}".format(user))
         
         om1 = False
         #userid = ctx.message.content[10:len(ctx.message.content)]
@@ -106,26 +92,32 @@ class Userinfo(commands.Cog):
 
         '''
         #get activity
-        try:
-            if om1 == True:
-                messages = await channel.history(limit=10000).flatten()#await ctx.message.channel.history(limit=10000).flatten()
-            else:
-                messages = await channel.history(limit=1000).flatten()#ctx.message.channel.history(limit=1000).flatten()
-        except discord.errors.Forbidden:
-            await ctx.send("Error, missing permissions to read {}.".format(channel))
-            return
+        do_activity = True
+        #manual override for this statistic to be displayed or not
 
-        #get history statistics
-        
-        messageCount = 0
-        for message in messages:
-            if message.author == user:
-                messageCount = messageCount + 1
-        if om1 == True:
-            activity = messageCount/100
+        if do_activity == True:
+            try:
+                if om1 == True:
+                    messages = await channel.history(limit=10000).flatten()#await ctx.message.channel.history(limit=10000).flatten()
+                else:
+                    messages = await channel.history(limit=1000).flatten()#ctx.message.channel.history(limit=1000).flatten()
+            except discord.errors.Forbidden:
+                await ctx.send("Error, missing permissions to read {}.".format(channel))
+                return
+
+            #get history statistics
+            
+            messageCount = 0
+            for message in messages:
+                if message.author == user:
+                    messageCount = messageCount + 1
+            if om1 == True:
+                activity = messageCount/100
+            else:
+                activity = messageCount/10
         else:
-            activity = messageCount/10
-        
+            activity = "Feature disabled for performance"
+            
         rolestring = "\n"
         not_in_server = False
         
@@ -147,9 +139,7 @@ class Userinfo(commands.Cog):
         #delta =  
         emb = discord.Embed(title = "{}".format(user),
         type = "rich",
-        colour = user.color#0x8cc43d,
-
-        #url = "output.p,
+        colour = user.color
         )
 
         if not_in_server:
@@ -191,13 +181,13 @@ class Userinfo(commands.Cog):
             emb.description = "Response time: {}ms\nImage generation time: {}ms".format(endTime-startTime,L2Presponsetime)
             await ctx.send(file=f,embed=emb)
         '''
-    '''
+    #'''
     @userinfo.error
     async def userinfo_error(self, ctx, err):
 
         if isinstance(err, commands.CommandInvokeError):
             await ctx.send("Incorrect command format. See `;help userinfo`.")
-    '''
+    #'''
 
 def setup(crdbot):
 
