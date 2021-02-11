@@ -28,10 +28,10 @@ class Userinfo(commands.Cog):
 
             try:
             #if True:
-                #identify a user by given ID, first checks the guild to see if the user is in the server and then tries an API call if not (working as of 11/11/2020)
+                #identify a user by given ID, first checks the guild to see if the user is in the server and then tries an API call if not (not working as of 20/11/2020)
                 print("attempting ID")
                 try:
-                    t_user = ctx.guild.get_member(int(arg))
+                    t_user = ctx.message.guild.get_member(int(arg))
                 except:
                     t_user = await self.crdbot.fetch_user(int(arg))
 
@@ -46,24 +46,30 @@ class Userinfo(commands.Cog):
                 pass
                 
             try:
-                #identify a user by mention, first checks the guild to see if the user is in it and then tries an API call if not
+                #identify a user by mention, first checks the guild to see if the user is in it and then tries an API call if not (not working as of 20/11/2020)
                 print("attempting mention")
                 argmember = int(arg[3:len(arg)-1])
                 print(argmember)
 
                 try:
-                    t_user = ctx.guild.get_member(argmember)
-                except:
-                    t_user = await self.crdbot.fetch_user(argmember)
                     
-                if t_user != None:
+                    t_user = ctx.message.guild.get_member(argmember)
+                    print("got")
+                    print(t_user)
+                except:
+                    
+                    t_user = await self.crdbot.fetch_user(argmember)
+                    print("got2")
+                    
+                if isinstance(t_user, discord.User):
+                    print("yea")
                     user = t_user
 
                 print(user)
             except:
                 pass
 
-            
+                
                 #arg1 = False
             #print(arg1)
             #if isinstance(arg1, discord.Member):

@@ -25,7 +25,7 @@ class Crdio(commands.Cog):
                 
                 if ctx.message.author == y:
                     
-                    msg3 = await ctx.send("Okay. I just want to warn you this is the suicide command. If you continue through with this command, you will ban yourself. React with \U0001F914 to proceed.")
+                    msg3 = await ctx.send("Okay. I just want to warn you this is the suicide command. If you continue through with this command, you will kick yourself. React with \U0001F914 to proceed.")
                     await msg3.add_reaction("\U0001F914")
                     msg1 = False
                     msg2 = False
@@ -41,7 +41,7 @@ class Crdio(commands.Cog):
                             
                             if ctx.message.author == y:
 
-                                msg5 = await ctx.send("Jesus Christ, calm down there {}. Let's not be so hasty. I'm being dead serious, this command will **ACTUALLY** ban you. You should stop now.".format(ctx.message.author))
+                                msg5 = await ctx.send("Jesus Christ, calm down there {}. Let's not be so hasty. I'm being dead serious, this command will **ACTUALLY** kick you. You should stop now.".format(ctx.message.author))
                                 await msg5.add_reaction("\U0001F914")
                                 msg3 = False
                                 msg4 = False                            
@@ -57,7 +57,7 @@ class Crdio(commands.Cog):
                                             
                                             if ctx.message.author == y:
 
-                                                msg7 = await ctx.send("Bloody hell. Okay, you have been warned. This is past my control now, and by reacting with \U0001F914 you confirm your demise. This is the last warning. If you react, you are banned. Game over. You'll have to ask the admins to unban you, and they will probably just laugh their arses off at you for being banned by such a stupid thing. But if you're really this thickheaded... again... you may proceed, by reacting \U0001F914.")
+                                                msg7 = await ctx.send("Bloody hell. Okay, you have been warned. This is past my control now, and by reacting with \U0001F914 you confirm your demise. This is the last warning. This is not a joke. If you react, you are kicked. Game over. You'll have to go find another server invite, and everyone will laugh at you for getting yourself kicked over such a stupid thing. But if you're really this thickheaded... again... you may proceed, by reacting \U0001F914.")
                                                 await msg7.add_reaction("\U0001F914")
                                                 msg5 = False
                                                 msg6 = False  
@@ -74,15 +74,18 @@ class Crdio(commands.Cog):
                                                             
                                                             if ctx.message.author == y:
                                                     
-                                                                await ctx.send("Welp. Don't say I didn't warn ya. Banning in 10 seconds, you may say your last goodbyes (or beg someone to shut me down, maybe)")
+                                                                await ctx.send("Welp. Don't say I didn't warn ya. kicking in 20 seconds, you may say your last goodbyes (or beg someone to shut me down, maybe)")
                                                                 msg7 = False
                                                                 msg8 = False  
 
                                                                 await asyncio.sleep(10)
+                                                                await ctx.send("You thought I was kidding, didn't you? Let this be a lesson to trust the funny bot.")
+                                                                await asyncio.sleep(10)
+                                                                
                                                                 try:
-                                                                    await ctx.guild.ban(discord.Object(id=ctx.author.id),reason="Got memed by ;crdio",delete_message_days=0)
+                                                                    await ctx.guild.kick(discord.Object(id=ctx.author.id),reason="Got memed by ;crdio")
                                                                 except:
-                                                                    await ctx.send("Ah. Looks like I lack the permissions to ban you. Better luck next time.")
+                                                                    await ctx.send("Ah. Looks like I lack the permissions to kick you. Better luck next time.")
 
 
 def setup(crdbot):

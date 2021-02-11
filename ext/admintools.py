@@ -11,56 +11,86 @@ class Purge(commands.Cog):
         
     @commands.command()
     @commands.has_permissions(manage_messages=True)
-    async def purge(self, ctx, num):
-        if True:#str(ctx.message.author.id) in config["General Settings"]["admins"]:
+    async def purge(self, ctx, num=None, user=None, before_message_id=None):
 
-            user = None
-            base = ";purge "+num
-            
+        
+        if user:
             if ctx.message.mentions:
                 user = ctx.message.mentions[0]
-
             else:
-                try:
-                    userid = int(ctx.message.content[len(base)+1:len(ctx.message.content)])
-                    user = ctx.message.guild.get_member(userid)
-                except ValueError:
-                    user = None
+                user = ctx.message.guild.get_member(int(user))
 
-            try:
-                num = int(num)
-                if num < 1:
-                    d = await ctx.send("Error, your input was less than 1.")
+        if num == None:
+            if before_message_id:
+                before = fetch_message(int(before_message_id))
+            else:
+                await ctx.send("Missing an argument. Correct command format: `;purge [x] [optional: user]` where `x` is the number of messages to delete. For further info (especially on the `user` argument) do `;help purge`.")
+                return
+            
+        else:
+            #a number is specified
+            before = None
+            
+            if int(num) > 50:
+                msg = await ctx.send("You are about to purge {} messages. React with ✅ to confirm and purge. Otherwise, wait 60 seconds for this message to time out.".format(num))
+                await msg.add_reaction("✅")
+                def usertest(reaction, reactor):
+                    return reactor == ctx.message.author and str(reaction.emoji) == "✅" 
+
+                try:
+                    reaction, reactor = await self.crdbot.wait_for("reaction_add", timeout=60.0, check = usertest)
+                    
+                except asyncio.TimeoutError:
+                    await ctx.send("Message timed out.")
                     return
 
                 
-                if user == None:
-                    d = await ctx.message.channel.purge(limit = num+1)
-                    await ctx.send("{} messages are now ashes!".format(len(d)-1),delete_after=5)
+            
+        
+            
+        try:
+            num = int(num)
+            if num < 1:
+                await ctx.send("Error, your input was less than 1.")
+                return
 
+            '''          
+            if user == None:
+                messages = await ctx.message.channel.purge(limit = num+1)
+                await ctx.send("{} messages are now ashes!".format(len(messages)-1),delete_after=5)
+
+            if user == True:
+            '''
+            def is_user(msg):
+                if user:
+                    return msg.author == user
                 else:
-                    def is_user(msg):
-                        return msg.author == user
-                        
-                    d = await ctx.message.channel.purge(limit = num+1, check=is_user)
-                    await ctx.send("Deleted {} messages by {}.".format(len(d),user),delete_after=5)
-
+                    return True
                 
-            except ValueError:
-                await ctx.send("Error, your input was not a number.")
+            messages = await ctx.message.channel.purge(limit = num+1, check=is_user, before=before)
+
+            if user:
+                await ctx.send("Deleted {} messages by {}.".format(len(messages),user),delete_after=5)
+            else:
+                await ctx.send("{} messages are now ashes!".format(len(messages)-1),delete_after=5)
+
+            
+        except ValueError:
+            await ctx.send("Error, your input was not a number.")
+        except discord.errors.Forbidden:
+            try:
+                await ctx.send("Error, I do not have the permissions to perform this command.")
             except discord.errors.Forbidden:
-                try:
-                    await ctx.send("Error, I do not have the permissions to perform this command.")
-                except discord.errors.Forbidden:
-                    print("Unable to send messages in {0.message.channel.name}, server {0.message.server.name}!".format(ctx))
+                print("Unable to send messages in {0.message.channel.name}, server {0.message.server.name}!".format(ctx))
 
-
+    '''
     @purge.error
     async def purge_error(self, err, ctx):
         
         if isinstance(err, commands.MissingRequiredArgument):
             await ctx.send("Missing an argument. Correct command format: `;purge [x] [optional: user]` where `x` is the number of messages to delete. For further info (especially on the `user` argument) do `;help purge`.")
-
+    '''
+    
 class Ban(commands.Cog):
     
     def __init__(self, crdbot):
