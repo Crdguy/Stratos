@@ -74,7 +74,7 @@ class Crdio(commands.Cog):
                                                             
                                                             if ctx.message.author == y:
                                                     
-                                                                await ctx.send("Welp. Don't say I didn't warn ya. kicking in 20 seconds, you may say your last goodbyes (or beg someone to shut me down, maybe)")
+                                                                await ctx.send("Welp. Don't say I didn't warn ya. Kicking in 20 seconds, you may say your last goodbyes (or beg someone to shut me down, maybe)")
                                                                 msg7 = False
                                                                 msg8 = False  
 

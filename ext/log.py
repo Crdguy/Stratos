@@ -98,7 +98,7 @@ class Log(commands.Cog):
         emb.add_field(name="Before",value=before.content, inline=False)
         emb.add_field(name="After",value=after.content, inline=False)
         if before.content == after.content:
-            emb.add_field(name="Additional Information",value="The message content stays the same, indicating this message may have been pinned, unpinned or had its embeds cleared.\n\nUser ID: {0.author.id}\nMessage ID: {0.id}\nChannel ID: {0.channel.id}".format(before),inline=False)
+            pass
         else:
             emb.add_field(name="Additional Information",value="User ID: {0.author.id}\nMessage ID: {0.id}\nChannel ID: {0.channel.id}".format(before),inline=False)
             

@@ -93,8 +93,10 @@ class Generators(commands.Cog):
 
         output = ""
         for x in stuff:
-            output = output + " " + x
-
+            try:
+                output = output + " " + x
+            except:
+                pass
         await ctx.send(output)
         
 def setup(crdbot):
