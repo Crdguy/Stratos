@@ -2,18 +2,100 @@
 #
 #Legend: release.major.minor.hotfix
 
-print("Initiating startup process (this may take longer if this application has just been launched)...")
-print("Importing modules...")
-
-import asyncio
-import discord
 import configparser
-from glob import glob
-from discord.ext.commands import Bot
-from discord.ext import commands
 import datetime
+from glob import glob
+
+import discord
 import gspread
+from discord.ext import commands
 from oauth2client.service_account import ServiceAccountCredentials
+
+
+#google api stuff
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('gapi client secret.json', scope)
+gcrdbot = gspread.authorize(creds)
+gcrdbot.login()
+#print("Import successful.\nSetting up Crdbot configurations..")
+
+#open "stratos.ini"
+print("Configuring crdbot...")
+try:
+    config = configparser.ConfigParser()
+    config.read('stratos.ini')
+
+except Exception:
+    input("Error, something went wrong while parsing 'stratos.ini'. Ensure the file is not corrupt or missing.")
+    exit(0)
+
+#configure intents
+intents = discord.Intents(
+    bans            =True,
+    dm_messages     =True,
+    dm_reactions    =True,
+    dm_typing       =True,
+    emojis          =True,
+    guild_messages  =True,
+    guild_reactions =True,
+    guild_typing    =False,
+    guilds          =True,
+    integrations    =True,
+    invites         =True,
+    members         =True,
+    messages        =True,
+    presences       =False,
+    reactions       =True,
+    typing          =False,
+    voice_states    =False,
+    webhooks        =True)
+#I hate this, but it gives modularity
+
+#configure Crdbot
+try:
+    bot_prefix = config["General Settings"]["botPrefix"]
+    crdbot = commands.Bot(command_prefix=bot_prefix, intents=intents)
+    crdbot.pm_help = True
+    print(f"Setup of configurations successful. Help to be sent in PM: {crdbot.pm_help}, bot prefix: {bot_prefix}\nAttempting to read files...")
+
+except Exception:
+    x = input("Critical error while performing setup. Aborting program.")
+    exit(0)
+
+
+#load extensions
+print("Loading all extensions...")
+#remove the help command, we already have a command called help
+crdbot.remove_command("help")
+file_names = []
+
+for file in glob("ext/*.py"):
+    #file is the path to the file, so we can format it to get the module name
+    f = file.replace("\\" , ".").replace("/",".").replace(".py","")
+    crdbot.load_extension(f)
+    file_names.append(f)
+
+print(f"Loaded the following extensions: {'\n'.join(file_names)}")
+
+
+@crdbot.event
+async def on_ready():
+    print("Logging in...")
+    print(f"Executed successfully! {crdbot.user.name} is up and running.")
+    print(f"The current time of execution is {datetime.datetime.now():%H:%M}.\n\n\n")
+
+    activity = discord.Game(f";help - {len(set(crdbot.get_all_members()))} members")
+    await crdbot.change_presence(activity=activity)
+
+
+
+#invite: https://discordapp.com/api/oauth2/authorize?client_id=557309788480864256&permissions=1543957590&scope=bot
+print("Extensions importing successful!\nAttempting connection to Discord servers...")
+
+crdbot.run(config["API Keys"]["discordToken"])
+
+# ===================================== Bot.run is blocking, nothing below will run =====================================
+
 '''
 #import modules
 print("Importing modules...")
@@ -62,93 +144,8 @@ from discord.ext import commands
 from discord.errors import DiscordException
 
 '''
-#google api stuff
-scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('gapi client secret.json', scope)
-gcrdbot = gspread.authorize(creds)
-gcrdbot.login()    
-#print("Import successful.\nSetting up Crdbot configurations..")
-
-#open "stratos.ini"
-print("Configuring crdbot...")
-try:
-    config = configparser.ConfigParser()
-    config.read('stratos.ini')
-
-except Exception:
-    input("Error, something went wrong while parsing 'stratos.ini'. Ensure the file is not corrupt or missing.")
-    exit(0)
-
-#configure intents
-intents = discord.Intents.default()
-
-#I hate this, but it gives modularity
-intents.guilds = True
-intents.bans = True
-intents.emojis = True
-intents.integrations = True
-intents.webhooks = True
-intents.invites = True
-intents.voice_states = False
-intents.presences = False
-intents.messages = True
-intents.guild_messages = True
-intents.dm_messages = True
-intents.reactions = True
-intents.guild_reactions = True
-intents.dm_reactions = True
-intents.typing = False
-intents.guild_typing = False
-intents.dm_typing = True
 
 
-#configure Crdbot
-try:
-    Client = discord.Client()
-    bot_prefix= config["General Settings"]["botPrefix"]
-    crdbot = commands.Bot(command_prefix=bot_prefix)
-    crdbot.pm_help = True
-    print("Setup of configurations successful. Help to be sent in PM: {}, bot prefix: {}\nAttempting to read files...".format(crdbot.pm_help, bot_prefix))
-except Exception:
-    x = input("Critical error while performing setup. Aborting program.")
-    exit(0)
-
-
-#load extensions
-print("Loading all extensions...")
-#remove the help command, we already have a command called help
-crdbot.remove_command("help")
-fstr = ""
-for f in glob("ext/*.py"):
-    #f is the path to the file, so we can format it to get the module name
-    f = str(f).replace("\\" , ".").replace("/",".").replace(".py","")
-    crdbot.load_extension(f)
-    fstr = fstr + f + ", "
-fstr = fstr[0:len(fstr)-2]
-print("Loaded the following extensions: {}".format(fstr))
-
-
-
-
-print("Extensions importing successful!\nAttempting connection to Discord servers...")
-
-#connect to Discord
-
-
-@crdbot.event
-async def on_ready():
-
-    print("Logging in...")
-    print("Executed successfully! {} is up and running.".format(crdbot.user.name))
-    print("Up and running! The current time of execution is {0.hour}:{0.minute}.\n\n\n".format(datetime.datetime.now()))
-    await crdbot.change_presence(activity=discord.Game(type=1, url = "https://www.twitch.tv/epic_style", name=";help - {} members".format(len(set(crdbot.get_all_members())))))
-
-    #variables
-    queue = []
-    fc = 0
-
-
-    
 #darksky API stuff - unused but let's not touch it incase
 #units = [config["API Settings"]["darkSkyUnits"]]
 #end of that
@@ -315,14 +312,3 @@ async def helpe_error(ctx,err):
 
             
 '''
-#@crdbot.event
-#async def on_message(message):
-
-
-
-
-
-    #await crdbot.process_commands(message) 
-
-#invite:        https://discordapp.com/api/oauth2/authorize?client_id=557309788480864256&permissions=1543957590&scope=bot
-crdbot.run(config["API Keys"]["discordToken"])
