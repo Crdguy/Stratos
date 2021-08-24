@@ -1,0 +1,222 @@
+modulename,filename
+acid cannon,AcidCannon_M_1.json
+acid missile launcher,AcidMissileLauncher_L_1.json
+afterburner,Afterburner.json
+heavy antimatter bomb,AntiMatterBomb_L_1.json
+heavy antimatter bomb m2,AntiMatterBomb_L_2.json
+antimatter reactor,AntiMatterReactor.json
+large antimatter reactor,AntiMatterReactor_L.json
+small armored fuel cell,ArmoredFuelCell_S.json
+armored fuel cell,ArmoredFuelCell_M.json
+heavy armored fuel cell,ArmoredFuelCell_L.json
+automated reloader,AutomatedReloader_S.json
+automated reloader m2,AutomatedReloader_M.json
+autopilot,Autopilot.json
+black hole generator,BlackHole_M_1.json
+braking system,BrakingSystem.json
+tachyon beam,ChargedLaser_L_1.json
+death ray,ChargedLaser_L_3.json
+ai death ray,ChargedLaser_L_2.json
+small tachyon beam,ChargedLaser_M_1.json
+heavy antimatter torpedo,ChargedTorpedo_L_1.json
+cloaking system,CloakingSystem.json
+quantum detonator,Detonator_M.json
+large drone bay m11,DroneBay_L_11.json
+large drone bay m21,DroneBay_L_21.json
+large drone bay m22,DroneBay_L_22.json
+large drone bay m31,DroneBay_L_31.json
+large drone bay m41,DroneBay_L_41.json
+large drone bay m51,DroneBay_L_51.json
+large drone bay m54,DroneBay_L_54.json
+large drone bay m81,DroneBay_L_81.json
+large drone bay ma1,DroneBay_L_A1.json
+large drone bay ms1,DroneBay_L_S1.json
+large santa's drone bay,DroneBay_L_Santa.json
+drone bay m11,DroneBay_M_11.json
+drone bay m21,DroneBay_M_21.json
+drone bay m22,DroneBay_M_22.json
+drone bay m31,DroneBay_M_31.json
+drone bay m41,DroneBay_M_41.json
+drone bay m51,DroneBay_M_51.json
+drone bay m54,DroneBay_M_54.json
+drone bay m81,DroneBay_M_81.json
+drone bay ma1,DroneBay_M_A1.json
+santa's drone bay,DroneBay_M_Santa.json
+drone bay s1,DroneBay_M_S1.json
+small drone bay m11,DroneBay_S_11.json
+small drone bay m21,DroneBay_S_21.json
+small drone bay m22,DroneBay_S_22.json
+small drone bay m31,DroneBay_S_31.json
+small drone bay m41,DroneBay_S_41.json
+small drone bay m51,DroneBay_S_51.json
+small drone bay m54,DroneBay_S_54.json
+small drone bay m81,DroneBay_S_81.json
+small drone bay ma1,DroneBay_S_A1.json
+small drone bay msanta,DroneBay_S_Santa.json
+small drone bay ms1,DroneBay_S_S1.json
+drone capture system,DroneControl_M.json
+small drone speed booster,DroneControlUnit.json
+drone speed booster,DroneControlUnit_M.json
+large drone speed booster,DroneControlUnit_L.json
+small drone damage booster,DroneDamageAmplifier.json
+drone damage booster,DroneDamageAmplifier_M.json
+large drone damage booster,DroneDamageAmplifier_L.json
+small drone defense booster,DroneDefense_S.json
+drone defense booster,DroneDefense_M.json
+large drone defense booster,DroneDefense_L.json
+small drone factory,DroneFactory.json
+drone factory,DroneFactory_M.json
+large drone factory,DroneFactory_L.json
+small drone navigation computer,DroneNavigationComputer.json
+drone navigation computer,DroneNavigationComputer_M.json
+large drone navigation computer,DroneNavigationComputer_L.json
+ecm jammer,EcmJammer.json
+emp torpedo,EmpTorpedo_M_1.json
+heavy emp torpedo,EmpTorpedo_L_1.json
+light energy absorber,EnergyAbsorber_S.json
+energy absorber,EnergyAbsorber_M.json
+heavy energy absorber,EnergyAbsorber_L.json
+fusion beam,EnergyBeam_M.json
+energy shield,EnergyShield.json
+energy siphon,EnergySiphon_M.json
+fortification module,FortificationSystem.json
+fragmentation bomb,FragBomb_M_1.json
+frontal energy shield,FrontalShield.json
+small fuel cells,FuelCell_S.json
+fuel cells,FuelCell_M.json
+large fuel cells,FuelCell_L.json
+small fusion drive,FusionDrive_S.json
+fusion drive,FusionDrive_M.json
+large fusion drive,FusionDrive_L.json
+high energy focus,HighEnergyFocus_S.json
+high energy focus m2,HighEnergyFocus_M.json
+holy cannon,HolyCannon.json
+light impact armor,ImpactArmor_S.json
+impact armor,ImpactArmor_M.json
+heaavy impact armor,ImpactArmor_L.json
+inertial damper,InertialDamper.json
+inertial stabilizer,InertialStabilizer.json
+ion cannon,IonCannon_M_1.json
+ion cannon m2,IonCannon_M_2.json
+heavy ion cannon,IonCannon_L_1.json
+heavy ion cannon m2,IonCannon_L_2.json
+heavy laser beam m2,LaserBeam_L_2.json
+laser beam,LaserBeam_M_1.json
+small laser beam,LaserBeam_S_1.json
+small laser beam m2,LaserBeam_S_2.json
+lasercannon,LaserCannon_M_1.json
+lighting cannon,LightningCannon_M_1.json
+small lightning cannon,LightningCannon_S_1.json
+small lightning cannon m2,LightningCannon_S_2.json
+small lightning cannon m3,LightningCannon_S_3.json
+mass driver,MassDriver_M_1.json
+mass driver m2,MassDriver_M_2.json
+heavy missile launcher,MissileLauncher_L_1.json
+heavy missile launcher m2,MissileLauncher_L_2.json
+heavy missile launcher m3,MissileLauncher_L_3.json
+heavy missile launcher m4,MissileLauncher_L_4.json
+missile launcher,MissileLauncher_M_1.json
+missile launcher m2,MissileLauncher_M_2.json
+missile launcher m3,MissileLauncher_M_3.json
+small missile launcher,MissileLauncher_S_1.json
+stalker missile launcher,MissileLauncher_T_1.json
+nanofiber structures,Nanofiber.json
+neutron blaster,NeutronBlaster_M_1.json
+neutron blaster m2,NeutronBlaster_M_2.json
+heavy neutron blaster,NeutronBlaster_L_1.json
+small nuclear drive,NuclearDrive_S.json
+nuclear drive,NuclearDrive_M.json
+large nuclear drive,NuclearDrive_L.json
+titan drive,NuclearDrive_T.json
+small nuclear reactor,NuclearReactor_S.json
+nuclear reactor,NuclearReactor_M.json
+large nuclear reactor,NuclearReactor_L.json
+small plasma cannon,PlasmaCannon_S_1.json
+plasma multicannon,PlasmaMultiCannon_M_1.json
+plasma thrower m2,PlasmaThrower_M_2.json
+plasma thrower,PlasmaThrower_M_1.json
+heavy plasma torpedo,PlasmaTorpedo_L_1.json
+small plasma web,PlasmaWeb_S_1.json
+plasma web,PlasmaWeb_M_1.json
+point defense system,PointDefense.json
+heavy proton torpedo,ProtoonTorpedo_L_1.json
+proton torpedo,ProtoonTorpedo_M_1.json
+proton torpedo m2,ProtoonTorpedo_M_2.json
+small proton torpedo,ProtoonTorpedo_S_1.json
+pulsar,Pulsar_M_1.json
+pulsar mk2,Pulsar_M_2.json
+heavy pulse cannon,PulseCannon_L_2.json
+pulse cannon,PulseCannon_M_1.json
+pulse cannon mk2,PulseCannon_M_2.json
+small pulse cannon,PulseCannon_S_1.json
+small pulse cannon m2,PulseCannon_S_2.json
+machine gun,PulseMashineGun_M_1.json
+pulse multicannon,PulseMultiCannon_M_1.json
+heavy quantum torpedo,QuantumTorpedo_L_1.json
+railgun,RailGun_L_1.json
+heavy railgun,RailGun_T_1.json
+rangemaster unit,RangemasterUnit_M.json
+small repair bot,RepairBot_S.json
+repair bot,RepairBot_M.json
+rocket launcher,RocketLauncher_M_1.json
+rocket launcher m2,RocketLauncher_M_2.json
+small shield capacitor,ShieldCapacitor_S.json
+shield capacitor,ShieldCapacitor_M.json
+large shield capacitor,ShieldCapacitor_L.json
+small shield generator,ShieldGenerator_S.json
+shield generator,ShieldGenerator_M.json
+large shield generator,ShieldGenerator_L.json
+singularity cannon,SingularityCannon_M_1.json
+small stasis field,StasisField_S_1.json
+stasis field,StasisField_M_1.json
+stealth field,StealthField.json
+super stealth field,SuperStealthField.json
+targeting unit,TargetingUnit.json
+warp drive,Teleporter.json
+boss warp drive,Teleporter_Boss1.json
+boss warp drive x,Teleporter_X.json
+boss warp drive xx,Teleporter_X2.json
+light thermal armor,ThermalArmor_S.json
+thermal armor,ThermalArmor_M.json
+heavy thermal armor,ThermalArmor_L.json
+light titanium armor,TitaniumArmor_S.json
+titanium armor,TitaniumArmor_M.json
+heavy titanium armor,TitaniumArmor_L.json
+tractor beam,TractorBeam_M.json
+vampiric ray,VampiricRay_M_1.json
+ai vampiric ray,VampiricRay_M.json
+heavy vampiric ray,VampiricRay_L_1.json
+ai heavy vampiric ray,VampiricRay_L.json
+firework cannon,XmasBomb_M_1.json
+light reactive armor,ReactiveArmor_S.json
+reactive armor,ReactiveArmor_M.json
+heavy reactive armor,ReactiveArmor_L.json
+inertial nullifier,InertialNullifier.json
+tutorial drive,TutorialDrive.json
+tutorial gun,TutorialGun.json
+tutorial missile,TutorialMissile.json
+wormtail system,WormTailDevice.json
+capital wormtail system,WormTailDevice_Boss.json
+small repair ray,RepairBeam_S_1.json
+repair ray,RepairBeam_M_1.json
+drone engine,DroneEngine_1.json
+drone engine m2,DroneEngine_2.json
+drone armor,DroneArmor_1.json
+large drone bay 0,DroneBay_L_0.json
+large drone bay 1,DroneBay_L_1.json
+large drone bay 3,DroneBay_L_3.json
+large drone bay 4,DroneBay_L_4.json
+large drone bay 5,DroneBay_L_5.json
+large drone bay 6,DroneBay_L_6.json
+large drone bay 7,DroneBay_L_7.json
+small drone bay 91,DroneBay_S_91.json
+heavy lightning cannon,LightningCannon.json
+cluster missile,MissileLauncher.json
+mine thrower,HeavyMortar.json
+small bionic armor,BionicArmor_S.json
+bionic armor,BionicArmor_M.json
+large bionic armor,BionicArmor_L.json
+small cloning center,ClonningCenter_S.json
+cloning center,ClonningCenter_M.json
+large cloning center,ClonningCenter_L.json
+infinity stone,InfinityStone_S.json

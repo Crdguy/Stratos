@@ -1,0 +1,350 @@
+techname,filename
+pot m1,1s.json
+pot m2,1m.json
+pot m3,1l.json
+dart m1,2s.json
+dart m2,2m.json
+dart m3,2l.json
+wasp m1,3s.json
+wasp m2,3m.json
+wasp m3,3l.json
+glaive m1,4s.json
+glaive m2,4m.json
+glaive m3,4l.json
+potato m1,5s.json
+potato m2,5m.json
+potato m3,5l.json
+maggot m1,6s.json
+maggot m2,6m.json
+maggot m3,6l.json
+barrel m1,7s.json
+barrel m2,7m.json
+barrel m3,7l.json
+hovertank,Hovertank.json
+acidcannon,AcidCannon_M_1
+acid missile launcher,AcidMissileLauncher_L_1.json
+afterburner,Afterburner.json
+heavy antimatter bomb,AntiMatterBomb_L_1.json
+heavy antimatter bomb m2,AntiMatterBomb_L_2.json
+antimatter reactor,AntiMatterReactor.json
+heavy antimatter reactor,AntiMatterReactor_L.json
+small armored fuel cell,ArmoredFuelCell_S.json
+armored fuel cell,ArmoredFuelCell_M.json
+heavy armored fuel cell,ArmoredFuelCell_L.json
+automated reloader,AutomatedReloader_S.json
+automated reloader m2,AutomatedReloader_M.json
+autopilot,Autopilot.json
+black hole generator,BlackHole_M_1.json
+colossus,Boss0.json
+megaladon,Boss2.json
+leviathan,Boss1.json
+capital wormship,Boss12.json
+jormungand,Boss13.json
+thor,Boss3.json
+kraken,Boss4.json
+oracle,Boss5.json
+overlord,Boss6.json
+zeus,Boss7.json
+doomstar,Boss8.json
+dreadnought,Boss9.json
+tartarus,Bossa.json
+chariot,Bossn.json
+braking system,BrakingSystem.json
+tachyon beam,ChargedLaser_L_1.json
+death ray,ChargedLaser_L_3.json
+small tachyon beam,ChargedLaser_M_1.json
+heavy antimatter torpedo,ChargedTorpedo_L_1.json
+cloaking system,CloakingSystem.json
+quantum detonator,Detonator_M.json
+large drone bay m11,DroneBay_L_11.json
+large drone bay m21,DroneBay_L_21.json
+large drone bay m22,DroneBay_L_22.json
+large drone bay m31,DroneBay_L_31.json
+large drone bay m41,DroneBay_L_41.json
+large drone bay m51,DroneBay_L_51.json
+large drone bay m54,DroneBay_L_54.json
+large drone bay m81,DroneBay_L_81.json
+large drone bay ma1,DroneBay_L_A1.json
+large santa's drone bay,DroneBay_L_Santa.json
+drone bay m11,DroneBay_M_11.json
+drone bay m21,DroneBay_M_21.json
+drone bay m22,DroneBay_M_22.json
+drone bay m31,DroneBay_M_31.json
+drone bay m41,DroneBay_M_41.json
+drone bay m51,DroneBay_M_51.json
+drone bay m54,DroneBay_M_54.json
+drone bay m81,DroneBay_M_81.json
+drone bay ma1,DroneBay_M_A1.json
+santa's drone bay,DroneBay_M_Santa.json
+small drone bay m11,DroneBay_S_11.json
+small drone bay m21,DroneBay_S_21.json
+small drone bay m22,DroneBay_S_22.json
+small drone bay m31,DroneBay_S_31.json
+small drone bay m41,DroneBay_S_41.json
+small drone bay m51,DroneBay_S_51.json
+small drone bay m54,DroneBay_S_54.json
+drone bay m81,DroneBay_S_81.json
+drone bay ma1,DroneBay_S_A1.json
+drone bay msanta,DroneBay_S_Santa.json
+drone capture system,DroneControl_M.json
+small drone speed booster,DroneControlUnit.json
+drone speed booster,DroneControlUnit_M.json
+large drone speed booster,DroneControlUnit_L.json
+small drone damage booster,DroneDamageAmplifier.json
+drone damage booster,DroneDamageAmplifier_M.json
+large drone damage booster,DroneDamageAmplifier_L.json
+small drone defense booster,DroneDefense_S.json
+drone defense booster,DroneDefense_M.json
+large drone defense booster,DroneDefense_L.json
+small drone factory,DroneFactory.json
+drone factory,DroneFactory_M.json
+large drone factory,DroneFactory_L.json
+small drone navigation computer,DroneNavigationComputer.json
+drone navigation computer,DroneNavigationComputer_M.json
+large drone navigation computer,DroneNavigationComputer_L.json
+ecm jammer,EcmJammer.json
+emp torpedo,EmpTorpedo_M_1.json
+heavy emp torpedo,EmpTorpedo_L_1.json
+small energy absorber,EnergyAbsorber_S.json
+energy absorber,EnergyAbsorber_M.json
+large energy absorber,EnergyAbsorber_L.json
+fusion beam,EnergyBeam_M.json
+energy shield,EnergyShield.json
+energy siphon,EnergySiphon_M.json
+interceptor,f0s1.json
+interceptor mk2,f0s1_mk2.json
+shadow,f0s2.json
+helios,f0s3.json
+rhino,f0s4.json
+bug,f12s1.json
+crab,f12s3.json
+banshee,f13s1.json
+valkyrie,f13s2.json
+goblin,f13s3.json
+yeti,f13s4.json
+scout,f1s1.json
+scout mk2,f1s1_mk2.json
+paladin,f1s2.json
+javelin,f1s3.json
+excalibur,f1s4.json
+dart,f1s5.json
+spectrum,f2s1.json
+spectrum mk2,f2s1_mk2
+zephyr,f2s2.json
+zion,f2s3.json
+stalker,f2s4.json
+trident,f2s5.json
+raven,f3s1.json
+raven mk2,f3s1_mk2.json
+praetor,f3s2.json
+thunder,f3s3.json
+manticore,f3s4.json
+drone,f4s1.json
+drone mk2,f4s1_mk2.json
+dragonfly,f4s2.json
+hornet,f4s3.json
+tarantula,f4s4.json
+messenger,f5s1.json
+messenger mk2,f5s1_mk2.json
+kryptoria,f5s2.json
+proxima,f5s3.json
+chronos,f5s4.json
+embryo,f6s1.json
+embryo mk2,f6s1_mk2.json
+chrysalis,f6s2.json
+oblivion,f6s3.json
+beholder,f6s4.json
+stalker,f6s5.json
+spike,f7s1.json
+spike mk2,f7s1_mk2.json
+probe,f7s2.json
+hatchet,f7s3.json
+freighter,f7s4.json
+object 34,f8s1.json
+object 18,f8s2.json
+object 61,f8s3.json
+object 117,f8s4.json
+iss corvette,f9s1.json
+iss gunboat,f9s2.json
+iss caravel,f9s3.json
+iss galleon,f9s4.json
+iss man-of-war,f9s5.json
+barracuda,fas1.json
+scorpio,fas2.json
+leech,fas3.json
+leech mk2,fas3_mk2.json
+nemesis,fas4.json
+egg,fns3.json
+viper,fns4.json
+tyrant,fns5.json
+eden,fns6.json
+gladius,fns7.json
+meteor,fns8.json
+scavenger,fns9.json
+wormship,f12s2.json
+fortification module,FortificationSystem.json
+fragmentation bomb,FragBomb_M_1.json
+frontal energy shield,FrontalShield.json
+small fuel cells,FuelCell_S.json
+fuel cells,FuelCell_M.json
+large fuel cells,FuelCell_L.json
+small fusion drive,FusionDrive_S.json
+fusion drive,FusionDrive_M.json
+large fusion drive,FusionDrive_L.json
+high energy focus,HighEnergyFocus_S.json
+high energy focus m2,HighEnergyFocus_M.json
+holy cannon,HolyCannon.json
+small impact armor,ImpactArmor_S.json
+impact armor,ImpactArmor_M.json
+large impact armor,ImpactArmor_L.json
+inertial damper,InertialDamper.json
+inertial stabilizer,InertialStabilizer.json
+ion cannon,IonCannon_M_1.json
+heavy ion cannon,IonCannon_L_1.json
+heavy laser beam m2,LaserBeam_L_2.json
+laser beam,LaserBeam_M_1.json
+small laser beam,LaserBeam_S_1.json
+small laser beam m2,LaserBeam_S_2.json
+lasercannon,LaserCannon_M_1.json
+lighting cannon,LightningCannon_M_1.json
+small lightning cannon,LightningCannon_S_1.json
+small lightning cannon m2,LightningCannon_S_2.json
+small lightning cannon m3,LightningCannon_S_3.json
+mass driver,MassDriver_M_1.json
+mass driver m2,MassDriver_M_2.json
+heavy missile launcher,MissileLauncher_L_1.json
+heavy missile launcher m2,MissileLauncher_2.json
+missile launcher,MissileLauncher_M_1.json
+missile launcher m2,MissileLauncher_M_2.json
+missile launcher m3,MissileLauncher_M_3.json
+small missile launcher,MissileLauncher_S_1.json
+stalker missile launcher,MissileLauncher_T_1.json
+nanofiber structures,Nanofiber.json
+neutron blaster,NeutronBlaster_M_1.json
+neutron blaster m2,NeutronBlaster_M_2.json
+heavy neutron blaster,NeutronBlaster_L_1.json
+small nuclear drive,NuclearDrive_S.json
+nuclear drive,NuclearDrive_M.json
+large nuclear drive,NuclearDrive_L.json
+titan drive,NuclearDrive_T.json
+small nuclear reactor,NuclearReactor_S.json
+nuclear reactor,NuclearReactor_M.json
+large nuclear reactor,NuclearReactor_L.json
+small plasma cannon,PlasmaCannon_S_1.json
+plasma multicannon,PlasmaMultiCannon_M_1.json
+plasma thrower m2,PlasmaThrower_M_2.json
+plasma thrower,PlasmaThrower_M_1.json
+heavy plasma torpedo,PlasmaTorpedo_L_1.json
+small plasma web,PlasmaWeb_S_1.json
+plasma web,PlasmaWeb_M_1.json
+point defense system,PointDefense.json
+heavy proton torpedo,ProtoonTorpedo_L_1.json
+proton torpedo,ProtoonTorpedo_M_1.json
+proton torpedo m2,ProtoonTorpedo_M_2.json
+small proton torpedo,ProtoonTorpedo_S_1.json
+pulsar,Pulsar_M_1.json
+pulsar mk2,Pulsar_M_2.json
+heavy pulse cannon,PulseCannon_L_2.json
+pulse cannon,PulseCannon_M_1.json
+pulse cannon mk2,PulseCannon_M_2.json
+small pulse cannon,PulseCannon_S_1.json
+small pulse cannon m2,PulseCannon_S_2.json
+machine gun,PulseMashineGun_M_1.json
+pulse multicannon,PulseMultiCannon_M_1.json
+heavy quantum torpedo,QuantumTorpedo_L_1.json
+railgun,RailGun_L_1.json
+heavy railgun,RailGun_T_1.json
+rangemaster unit,RangemasterUnit_M.json
+small repair bot,RepairBot_S.json
+repair bot,RepairBot_M.json
+rocket launcher,RockerLauncher_M_1.json
+rocket launcher m2,RockerLauncher_M_2.json
+santa,santa.json
+small shield capacitor,ShieldCapacitor_S.json
+shield capacitor,ShieldCapacitor_M.json
+large shield capacitor,ShieldCapacitor_L.json
+small shield generator,ShieldGenerator_S.json
+shield generator,ShieldGenerator_M.json
+large shield generator,ShieldGenerator_L.json
+singularity cannon,SingularityCannon_M_1.json
+small stasis field,StasisField_S_1.json
+stasis field,StasisField_M_1.json
+stealth field,StealthField.json
+targeting unit,TargetingUnit.json
+warp drive,Teleporter.json
+small thermal armor,ThermalArmor_S.json
+thermal armor,ThermalArmor_M.json
+large thermal armor,ThermalArmor_L.json
+small titanium armor,TitaniumArmor_S.json
+titanium armor,TitaniumArmor_M.json
+large titanium armor,TitaniumArmor_L.json
+tractor beam,TractorBeam_M.json
+vampiric ray,VampiricRay_M_1.json
+firework cannon,XmasBomb_M_1.json
+heavy lightning cannon,LightningCannon.json
+cluster missile,MissileLauncher.json
+mine thrower,HeavyMortar.json
+small bionic armor,BionicArmor_S.json
+bionic armor,BionicArmor_M.json
+large bionic armor,BionicArmor_L.json
+MODDED CONTENT BELOW THIS LINE,
+abaddon,ModdedTech/Abaddon_Tech.json
+imperium,ModdedTech/Imperium.json
+//e-7 guardian,ModdedTech/E-7_Guardian_Tech.json
+//e-13 interceptor,ModdedTech/E-13_Interceptor_Tech.json
+//e-23 gunship,ModdedTech/E-23_Gunship_Tech.json
+//hy-16,ModdedTech/HY-16_Tech.json
+//hy-17,ModdedTech/HY-17_Tech.json
+//hy-22-85,ModdedTech/HY-22-85_Tech.json
+//hy-24-b,ModdedTech/HY-24-B_Tech.json
+//sb-4l,//
+//hxp-22-34,//
+//astro nexus,//
+//tie fighter,//
+//tie bomber,//
+//tie interceptor,//
+//tie advanced,//
+//tie phantom,//
+//tie defender,//
+//acclamator (imperial),//
+//victory-ii,//
+//imperial-ii,//
+//a-wing,//
+//x-wing,//
+//y-wing (rebel),//
+//millenium falcon,//
+//nebulon-b,//
+//corellian gunship,//
+//mc80,//
+//acclamator (republic),//
+//victory-i,//
+//arc-170,//
+//arquitens,//
+//delta-7,//
+//eta-2,//
+//dreadnaught,//
+//headhunter,//
+//n1 royal starfighter,//
+//v19 torrent,//
+//v-wing,//
+//venator,//
+//belbullab-22,//
+//soulless one,//
+//lucrehulk,//
+//munificent frigate,//
+//providence,//
+//supply ship,//
+//wavecrest frigate,//
+//crusader corvette,//
+//keldabe,//
+//aggressor,//
+//starviper,//
+ampithere,ModdedTech/Borgan/AmpithereTech.json
+bakunawa,//ModdedTech/Borgan/BakunawaTech.json
+castle,//ModdedTech/Borgan/CastleTech.json
+draglet,//ModdedTech/Borgan/DragletTech.json
+dragon,ModdedTech/Borgan/DragonTech.json
+naga,ModdedTech/Borgan/NagaTech.json
+vaptor,ModdedTech/Borgan/VaptorTech.json
+wyrm,ModdedTech/Borgan/WyrmTech.json
+wyvern,ModdedTech/Borgan/WyvernTech.json

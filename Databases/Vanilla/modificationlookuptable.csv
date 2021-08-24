@@ -1,0 +1,23 @@
+modificationID,modificationName,displayname
+0,NaN,None
+1,WeightMod,Weight
+2,EnergyCostMod,Energy Cost
+3,DefenseMod,Defense
+4,HitPointsMod,Hit Points
+5,DamageMod,Damage
+6,CooldownMod,Cooldown
+7,RangeMod,Range
+8,BulletVelocityMod,Bullet Velocity
+9,EnergyCapacityMod,Energy Capacity
+10,RepairRateRod,Repair Rate
+11,EnginePowerMod,Engine Power
+12,EnergyRechargeMod,Energy Recharge Rate
+13,BulletVelocity2Mod,Bullet Velocity (-Damage)
+14,AoeRangeMod,Area of Effect
+15,ShieldPowerMod,Shield Power
+16,Damage2Mod,Damage (+Cooldown)
+17,DroneDamageMod,Drone Damage
+18,DroneDefenseMod,Drone Defense
+19,DroneSpeedMod,Drone Speed
+20,DroneRangeMod,Drone Range
+21,BulletWeightMod,Bullet Weight
