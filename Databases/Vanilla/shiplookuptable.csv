@@ -1,0 +1,124 @@
+shipname,filename,description,image
+drone11,11.json,The Veniri drone. Equipped with a Small Pulse Cannon.,drone1.png
+drone21,21.json,"The Bushrak's first drone, fit with a Small Laser.",drone2.png
+drone22,22.json,The Bushrak's second drone. Carries a Small Statis Field.,drone2.png
+drone31,31.json,The Korerans' torpedo drone. Carries a Small Proton Torpedo.,drone3.png
+drone41,41.json,"The Taraniak drone. Equipped with a Small Lightning Cannon. When this drone dies, it releases a damaging cloud.",drone4.png
+drone51,51.json,The Sayjix drone. Carries a Small Plasma Cannon.,drone5.png
+drone81,81.json,"The Unknown's drone. Carries a Small Repair Ray, which can damage enemies and heal the user's ship.",drone8.png
+drone91,91.json,The Empire drone. Carries a Rocket Launcher and a Repair Ray M2. AI exclusive.,f9s3.png
+dronea1,a1.json,The Daazen drone. Carries an Energy Siphon.,dronea.png
+colossus,Boss0.json,"The Capital Ship of Zumbalari. Has many weapon slots of different types, including M and C slots. Four of its five C slots have built in Targeting Units, and the ship also has 50% kinetic resistance and 33% heat and energy resistance. This ship is not recommended for player use, by me, so please don't use it.",flagship0.png
+leviathan,Boss1.json,"The Capital Ship of Veniri. The ship suffers from poor firepower, but does have a decent number of green and blue slots. It is most useful as a drone carrier, or an interceptor with Hovertanks - but most other capital ships can easily overpower it.",flagship1.png
+megalodon,Boss2.json,"The Bushrak Capital Ship. Packs many M slots, many of which are also MT or LM. Can be used as a very effective cloak and dagger ship or a missile sniper. For a long time, this ship also had the greatest amount of red slots of any ship.",flagship2.png
+thor,Boss3.json,"The Korerans' Capital Ship. The Thor is the only Korerans ship that cannot mount torpedoes without Glaive sattelites, but is instead best known as a powerful drone carrier. The ship itself is slow, with only 18 engine slots.",flagship3.png
+kraken,Boss4.json,"The Taraniak Capital Ship. As expected from Taraniak the ship is living - regenerating 1% of its HP per second, and it can wield both L and S weapons. The S slots in the middle hold a Heavy Antimatter Bomb M2 by default, and the SL slots at the front have a 180° built in Targeting Unit.",flagship4.png
+oracle,Boss5.json,"The Sayjix Capital Ship. Being a Sayjix ship, it features a 360° turret - with CL slots. Its CL slots can hold many weapons, including Heavy Ion Cannons, Holy Cannons, Death Rays and Tachyon Beams. It is most well known as a sentry ship.",flagship5.png
+overlord,Boss6.json,"The Jurgans' Capital Ship. As expected from the Jurgans the ship is living, regenerating 1% of its HP per second. The ship resembles a Megalodon, but with some sort of infection. It has less weaponry than the Megalodon, but what it loses in firepower it makes up for in versatility. It can mount Lasers, Torpedoes and Cannons. For example, when expanded it can mount four Heavy Ion Cannons and a Heavy Laser.",flagship6.png
+zeus,Boss7.json,"The Neganari Capital Ship. Features a 180° TU L slot in its middle, capable of holding a Heavy Laser Beam (or when expanded, a Death Ray). It also has two 2x3 M slots. The ship also features a large amount of engine slots and green slots, allowing it to become a very fast ship.",flagship7.png
+doomstar,Boss8.json,"The Unknown Capital Ship. Has a 3x5 L slot which is locked with a Death Ray, also with a 30° Targeting Unit mount. The ship can also mount twenty four drones.",flagship8.png
+dreadnought,Boss9.json,"The Empire Capital Ship. Has a very large number of red slots with a total of seven barrels. All slots have built in 30° Targeting Unit mounts. The side slots can be expanded to fit up to six Holy Cannons, for player use.",flagship9.png
+odin,boss13.json,"The Syndicate Capital Ship. Has two 2x4 M slots and two 2x4 C slots. The ship can be used as a powerful missile build, or make use of its C slots to wield dual Heavy Ion Cannons.",flagship13.png
+harbour,Boss15.json,"The Scavenger Capital Ship. A massive flagship with two 3x4 L slots. While these slots cannot be expanded to fit Death Rays, the ship can make use of Repair Rays. The Harbour can be used as a very powerful carrier.",flagships.png
+tartarus,Bossa.json,"The Daazen Capital Ship. A very modular flagship with many green-blue slots. The flagship is greatly let down by its locked Heavy Vampiric Ray, though it can be upgraded in Event Horizon: Frontier.",flagshipa.png
+chariot,Bossn.json,One of the Free Stars Capital Ships. The Chariot is a fast flagship built to hold the Holy Cannon with its omnidirectional 3x3 C slot turret. Newly crafted Chariots come with three Firework Cannons.,flagshipn.png
+interceptor,f0s1.json,A Frigate of the Zumbalari faction. A well-rounded fighter that works well with Pulse Cannons or Multi-cannons.,f0s1.png
+interceptor mk2,f0s1_mk2.json,The Mk2 version of the Interceptor. Expanded weapon slots and more space for modules make it a worthy successor. Can be useful early on with Railguns or Multi-cannons.,f0s1_2.png
+shadow,f0s2.json,"The Destroyer of the Zumbalari faction. Fits a Missile Launcher, or when expanded can fit a Heavy Missile Launcher M2. All enemy versions of this ship have high heat resistance, and have a Cloaking Device which can be very annoying to lower level players.",f0s2.png
+helios,f0s3.json,"The Cruiser of the Zumbalari faction. Often overlooked and forgotten, the Helios can fit two Laser Cannons or a Laser Beam, making it quite useful early on. Enemy versions of the ship are very easily dealt with, dealing low damage and charging for the player.",f0s3.png
+rhino,f0s4.json,"The Battleship of the Zumbalari faction. Has a large amount of weapon slots, which are very flexible - it can fit dual Ion Cannons when expanded, a Heavy Antimatter Bomb, or up to four Plasma Webs. The enemy version uses a Stealth Field to try and sneak up to the player and use Plasma Throwers, making it quite easily dispatched.",f0s4.png
+scout,f1s1.json, ,f1s1.png
+scout mk2,f1s1_mk2.json, ,f1s1_2.png
+paladin,f1s2.json, ,f1s2.png
+javelin,f1s3.json, ,f1s3.png
+excalibur,f1s4.json, ,f1s4.png
+dart,f1s5.json, ,f1s5.png
+spectrum,f2s1.json, ,f2s1.png
+spectrum mk2,f2s1_mk2.json, ,f2s1_2.png
+zephyr,f2s2.json, ,f2s2.png
+zion,f2s3.json, ,f2s3.png
+stalker,f2s4.json, ,f2s4.png
+trident,f2s5.json, ,f2s5.png
+raven,f3s1.json, ,f3s1.png
+raven mk2,f3s1_mk2.json, ,f3s1_2.png
+praetor,f3s2.json, ,f3s2.png
+thunder,f3s3.json, ,f3s3.png
+manticore,f3s4.json, ,f3s4.png
+drone,f4s1.json, ,f4s1.png
+drone mk2,f4s1_mk2.json, ,f4s1_2.png
+dragonfly,f4s2.json, ,f4s2.png
+hornet,f4s3.json, ,f4s3.png
+tarantula,f4s4.json, ,f4s4.png
+messenger,f5s1.json, ,f5s1.png
+messenger mk2,f5s1_mk2.json, ,f5s1_2.png
+kryptoria,f5s2.json, ,f5s2.png
+proxima,f5s3.json, ,f5s3.png
+chronos,f5s4.json, ,f5s4.png
+embryo,f6s1.json, ,f6s1.png
+embryo mk2,f6s1_mk2.json, ,f6s1_2.png
+chrysalis,f6s2.json, ,f6s2.png
+oblivion,f6s3.json, ,f6s3.png
+beholder,f6s4.json, ,f6s4.png
+zombie,f6s5.json, ,f6s5.png
+spike,f7s1.json, ,f7s1.png
+spike mk2,f7s1_mk2.json, ,f7s1_2.png
+probe,f7s2.json, ,f7s2.png
+hatchet,f7s3.json, ,f7s3.png
+freighter,f7s4.json, ,f7s4.png
+object 34,f8s1.json, ,f8s1.png
+object 18,f8s2.json, ,f8s2.png
+object 61,f8s3.json, ,f8s3.png
+object 117,f8s4.json, ,f8s4.png
+iss corvette,f9s1.json, ,f9s1.png
+iss gunboat,f9s2.json, ,f9s2.png
+iss caravel,f9s3.json, ,f9s3.png
+iss galleon,f9s4.json, ,f9s4.png
+iss man-of-war,f9s5.json, ,f9s5.png
+bug,f12s1.json, ,f12s1.png
+crab,f12s3.json, ,fns4.png
+banshee,f13s1.json, ,f13s1.png
+valkyrie,f13s2.json, ,f13s2.png
+goblin,f13s3.json, ,f13s3.png
+yeti,f13s4.json, ,f13s4.png
+velez,f14s1.json, ,f14s1.png
+rustbucket,f15s1.json, ,fs1.png
+rattletrap,f15s2.json, ,fs2.png
+nomad,f15s3.json, ,fs3.png
+barracuda,fas1.json, ,fas2.png
+scorpio,fas2.json, ,fas3.png
+leech,fas3.json, ,fas1.png
+leech mk2,fas3_mk2.json, ,fas1_2.png
+nemesis,fas4.json, ,fas4.png
+corn,fns10.json, ,fns10.png
+falcon,fns2.json, ,fns5.png
+egg,fns3.json, ,fns1.png
+easter egg,fns3_mk2.json, ,fns1_2.png
+viper,fns4.json, ,fns6.png
+tyrant,fns5.json, ,fns7.png
+eden,fns6.json, ,fns3.png
+gladius,fns7.json, ,fns8.png
+meteor,fns8.json, ,fns2.png
+scavenger,fns9.json, ,fns9.png
+invader1,invader1.json, ,space_invader.png
+invader2,invader2.json, ,space_invader.png
+invader3,invader3.json, ,space_invader.png
+merchant,Merchant.json, ,merchant.png
+mothership,mothership.json, ,mothership.png
+myinvader,myinvader.json, ,space_invader.png
+drones1,s1.json,The Scavenger drone. Has 112 hitpoints and a Pulse Cannon M2.,fs1.png
+salvage drone,salvage drone.json,"A drone unobtainable for player use. The drone can be found in Event Horizon: Frontier, as the drone unlocked by the 'Salvage Drones' upgrade.",salvage_drone.png
+santa,santa.json,,santa.png
+santa drone,santa_drone.json,,santa_drone.png
+smuggler,smuggler.json,,smuggler.png
+starbase,starbase.json,"The Starbase. In Event Horizon, when attacking faction-occupied bases (or Christmas nodes) one of these is usually present. In Event Horizon Frontier, you have your own starbase which must be protected.",starbase.png
+wormship,worm.json,,worm_head.png
+jormungandr,worm_boss.json,,worm_head2.png
+turret,turret1.json,,turret.png
+outpost,outpost1.json,,outpost.png
+epix,/ModdedShips/Crdguy's Entry.json,"My entry for this competition. Don't ask why I decided to submit it through Stratos, or why this is the first competition I have participated in. It's some battleship that goes pew pew. Kthx hope I win.",grab.jpg
+slime,f16s1.json,,slime.png
+amoeba,f16s2.json,,amoeba.png
+slime2,f16s3.json,,slime2.png
+covid-6019,f16s4.json,,devourer.png
+hive,hive.json,,hive.png
+starbase mk2,starbase2.json,"The Starbase Mk2. Unavailable in Event Horizon, but can be obtained through the arena in Event Horizon: Frontier. A larger starbase.",starbase2.png

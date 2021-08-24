@@ -192,6 +192,7 @@ class Log(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_channel_update(self, before, after):
+
         audit = True
         #try:
 
@@ -239,6 +240,10 @@ class Log(commands.Cog):
             audit = False
         
         if audit == True:
+            try:
+                assert user
+            except:
+                user = self.crdbot.user
             emb.set_author(name=user, icon_url=user.avatar_url)
             emb.add_field(name="Additional Information",value="User ID: {0.id}\nChannel ID: {1.id}".format(user,after),inline=False)
         
