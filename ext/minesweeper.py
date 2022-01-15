@@ -9,9 +9,7 @@ from discord.ext import commands
 emojis = [':zero:', ':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:', ':bomb:']
 
 def make_grid(size: int) -> list[list[str]]:
-    """Generates a grid given two inputs n and m,
-    where n is the size of the grid in the x coordinate
-    and m is the size of the grid in the y coordinate"""
+    """Generates a square grid of given size"""
 
     return [[""] * size for _ in range(size)]
 
@@ -32,16 +30,15 @@ def plant_mines(grid: list[list[str]], coeffs: tuple[float, float]) -> int:
     cells = size ** 2
 
     # generates a random number where 10% of total tiles <= mineno <= 30% of total tiles
-    mines = round(random.uniform(lower * cells, upper * cells))
+    c = mines = round(random.uniform(lower * cells, upper * cells))
 
-    for _ in range(mines):
-        while True:
-            x = random.randrange(0, size)
-            y = random.randrange(0, size)
+    while c:
+        x = random.randrange(0, size)
+        y = random.randrange(0, size)
 
-            if grid[y][x] != emojis[-1]:
-                grid[y][x] = emojis[-1]
-                break
+        if grid[y][x] != emojis[-1]:
+            grid[y][x] = emojis[-1]
+            c -= 1
 
     return mines
 
