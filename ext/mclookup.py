@@ -1,50 +1,57 @@
-from discord.ext import commands
-import discord
-import asyncio
-import requests
+from __future__ import annotations
+
 import time
+from typing import Any, TypedDict
 
-class MClookup(commands.Cog):
-    
-    def __init__(self, crdbot):
-        self.crdbot = crdbot
-            
-    @commands.command()
-    async def mclookup(self, ctx, username):
+import aiohttp
+import discord
+from discord.ext import commands
+from typing_extensions import NotRequired
 
-        info = requests.get("https://mc-heads.net/minecraft/profile/{}".format(username)).json()
 
-        names = ""
+class NameEntry(TypedDict):
+    name: str
+    changedToAt: NotRequired[int]
 
-        for item in info["name_history"]:
-            print(item)
-            for x, y in item.items():
 
-                if x == "name":
-                    names = names + y
-                elif x == "changedToAt":
-                    print(int(y))
-                    timeObject = time.gmtime(int(y)/1000)
-                    #"{0[2]}/{0[1]}/{0[0]} (DD/MM/YYYY) at {0[3]}:{0[4]}"
-                    updateTime = "{}/{}/{} (DD/MM/YYYY) at {}:{}".format(timeObject[2],timeObject[1],timeObject[0],timeObject[3],timeObject[4])
-                    names = names + " (as of {} GMT+0)\n".format(updateTime)
-                print(x)
-                print(y)
+class MCResponse(TypedDict):
+    id: str
+    name: str
+    properties: list[dict[str, Any]]
+    name_history: list[NameEntry]
 
-        #names = 0
 
-        emb = discord.Embed(title = "Direct download", url = "https://mc-heads.net/download/{}".format(username),
-        description = "**Name History**:\n\n".format(names),
-        type = "rich",
-        colour = 0x8cc43d,
-        )
+@commands.command()
+async def mclookup(ctx: commands.Context, username: str) -> None:
+    """Lookup a MC player"""
 
-        emb.set_thumbnail(url="https://mc-heads.net/head/{}".format(username))
-        emb.set_author(name=username)
-        emb.set_image(url="https://mc-heads.net/body/{}".format(username))
-        emb.set_footer(text="Avatars provided by MCHeads!")
-        await ctx.send(embed=emb)
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f"https://mc-heads.net/minecraft/profile/{username}") as response:
+            info: MCResponse = await response.json()
 
-def setup(crdbot):
+    names = []
 
-    crdbot.add_cog(MClookup(crdbot))
+    for entry in info["name_history"]:
+        name = entry["name"]
+
+        if "changedToAt" in entry:
+            timestamp = entry["changedToAt"]
+            struct = time.localtime(timestamp/1000)
+            name += time.strftime(' (as of %d/%m/%Y at %H:%M GMT+0)', struct)
+
+        names.append(name)
+
+    embed = discord.Embed(
+        title="Direct download",
+        description="**Name History:**\n" + "\n".join(names),
+        url=f"https://mc-heads.net/download/{username}",
+        colour=0x8cc43d)
+
+    embed.set_thumbnail(url=f"https://mc-heads.net/head/{username}")
+    embed.set_author(name=username)
+    embed.set_image(url=f"https://mc-heads.net/body/{username}")
+    embed.set_footer(text="Avatars provided by MCHeads!")
+    await ctx.send(embed=embed)
+
+def setup(crdbot: commands.Bot):
+    crdbot.add_command(mclookup)
