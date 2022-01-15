@@ -48,7 +48,8 @@ async def userinfo(
 
     if isinstance(user, discord.Member):
         assert user.joined_at is not None
-        roles = "\n".join(role.mention for role in user.roles)
+        # reverse and skip @everyone
+        roles = "\n".join(role.mention for role in user.roles[:0:-1]) or "None"
         desc += (
             f"\n**Join Date**: {user.joined_at:%Y-%m-%d at %H:%M} (UTC+0)"
             f"({(datetime.datetime.utcnow() - user.joined_at).days} days ago)"
