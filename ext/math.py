@@ -1,225 +1,153 @@
-from discord.ext import commands
-import discord
-import asyncio
+import cmath
 import math
+
+import discord
 import numpy
-
-class MathCommands(commands.Cog):
-
-    def __init__(self, crdbot):
-        self.crdbot = crdbot
-        
-    @commands.command(pass_context=True)
-    async def quadratic(self,ctx, a, b, c):
-
-        imaginary = False
-        
-        a = int(a)
-        b = int(b)
-        c = int(c)
-
-        
-        s1 = -b
-
-        s2 = b**2
-
-        s3 = int(4* a *c)
-
-        s4 = s2 - s3
-
-        s5 = 2 * a
-
-        #await ctx.send("(-({}) +- sqrt(({})^2-4({})({})))/2({})".format(b,b,a,c,a))
-                         
-        #await ctx.send("({} +- sqrt({}-{}))/{}".format(s1,s2,s3,s5))
-
-        s6 = s2 - s3
-
-        #await ctx.send("({} +- sqrt({}))/{}".format(s1,s6,s5))
-
-        try:
-            s7 = math.sqrt(s6)
-        except Exception:
-            imaginary = True
-            s7 = "sqrt({})".format(s6)
-            print("divide by 0 1")
-            #return()
-          
-        #await ctx.send("({} +- {})/{}".format(s1,s7,s5))
-
-        if imaginary == True:
-            s8 = "{}+{}".format(s1,s7)
-        else:
-            s8 = s1 + s7
-
-          
-        #await ctx.send("Solution 1:\n{}/{}".format(s8,s5))
-          
-
-        try:
-            if imaginary == True:
-                s9 = "{}/{}".format(s8,s5)
-            else:
-                s9 = s8/s5
-        except ZeroDivisionError:
-            imaginary == True
-            print("divide by 0 2")
-            s9 = "{}/{}".format(s8,s5)
-            #return()
-
-        #await ctx.send("x = {}".format(s9))
-
-        if imaginary == True:
-            s10 = "{}-{}".format(s1,s7)
-        else:
-            s10 = s1 - s7
-
-        #await ctx.send("Solution 2:\n{}/{}".format(s10,s5))
-
-        try:
-            if imaginary == True:
-                s11 = "{}/{}".format(s10,s5)
-            else:
-                s11 = s10/s5
-        except ZeroDivisionError:
-            imaginary = True
-            print("divide by 0 3")
-            s11 = "{}/{}".format(s10,s5)
-            #return()
-
-        
+from discord.ext import commands
 
 
+@commands.command()
+async def quadratic(ctx: commands.Context, a: float, b: float, c: float = 0) -> None:
+    """Solves a quadratic equation."""
+    # ∆ = b² - 4ac
+    # x = (-b ± √∆) / 2a
 
-        #await ctx.send("x = {}".format(s11))
-        solution = "(-({}) +- sqrt(({})^2-4({})({})))/2({})\n({} +- sqrt({}-{}))/{}\n({} +- sqrt({}))/{}\n({} +- {})/{}\nSolution 1:\n{}/{}\nx = {}\nSolution 2:\n{}/{}\nx = {}".format(b,b,a,c,a,s1,s2,s3,s5,s1,s6,s5,s1,s7,s5,s8,s5,s9,s10,s5,s11) 
-        
-        emb = discord.Embed(
-            title = "Solving quadratic equation {}x² + {}x + {}".format(a,b,c),
-            #description = solution,
-            colour = 0x8cc43d,
-            
-            )
-        if imaginary == True:
-            emb.title = "Solving quadratic equation {}x² + {}x + {} - Error, imaginary number!".format(a,b,c)
-            
-        emb.add_field(name = "Solution 1", value = "Solution 1:\n{}/{}\nx = {}".format(s8,s5,s9), inline = True)
-        emb.add_field(name = "Solution 2", value = "Solution 2:\n{}/{}\nx = {}".format(s10,s5,s11), inline = True)
-        emb.add_field(name = "Method", value = "-({}) +- sqrt(({})^2-4({})({})))/2({})\n({} +- sqrt({}-{}))/{}\n({} +- sqrt({}))/{}\n({} +- {})/{}".format(b,b,a,c,a,s1,s2,s3,s5,s1,s6,s5,s1,s7,s5), inline = False)
-        await ctx.send(embed = emb)
+    if a == 0:
+        raise commands.UserInputError("Provided equation is not quadratic")
 
-    @quadratic.error
-    async def quadratic_error(err,ctx):
-        
-        if isinstance(err, commands.MissingRequiredArgument):
-            await ctx.send("Missing one or more arguments. Correct command format: `;quadratic [a] [b] [c]`")
-        elif isinstance(err, commands.CommandInvokeError):
-            await ctx.send("Looks like one of the arguments (a, b or c) is incorrect. Are they all integers (whole numbers)?")
+    delta = b**2 - 4*a*c
 
-    @commands.command(pass_context=True)
-    async def cubic(self, ctx, a, b, c, d):
-
+    try:
+        delta_sqrt = math.sqrt(delta)
         imaginary = False
 
-        
-        a = int(a)
-        b = int(b)
-        c = int(c)
-        d = int(d)
+    except ValueError:
+        delta_sqrt = cmath.sqrt(delta)
+        imaginary = True
+
+    sol1 = -b + delta_sqrt
+    x1 = sol1 / (a*2)
+
+    sol2 = -b - delta_sqrt
+    x2 = sol2 / (a*2)
+
+    embed = discord.Embed(
+        title=f"Solving quadratic equation {a:.5g}x² + {b:.5g}x + {c:.5g}"
+        + " - imaginary domain" if imaginary else "",
+        colour=0x8cc43d)
+
+    embed.add_field(
+        name="Solution 1",
+        value=f"`{sol1:.5g} / {a*2:.5g}`\n`x = {x1:.10g}`",
+        inline=True)
+    embed.add_field(
+        name="Solution 2",
+        value=f"`{sol2:.5g} / {a*2:.5g}`\n`x = {x2:.10g}`",
+        inline=True)
+    embed.add_field(
+        name="Method",
+        value=f"`-({b:.5g}) ± √(({b:.5g})² - 4({a:.5g})({c:.5g}))) / ({a:.5g}*2)`\n"
+              f"`({-b:.5g} ± √({b**2:.5g}{-4*a*c:+.5g})) / {a*2:.5g}`\n"
+              f"`({-b:.5g} ± √{delta:.5g}) / {a*2:.5g}\n`"
+              f"`({-b:.5g} ± {delta_sqrt:.5g}) / {a*2:.5g}`")
+    await ctx.send(embed=embed)
 
 
+@commands.command()
+async def cubic(ctx: commands.Context, a: int, b: int, c: int, d: int) -> None:
+    """Solves a cubic equation."""
 
-        solution = "x = ³√(q + √(q² + (r - p²)³))  +  ³√(q - √(q² + (r - p²)³))  +  p\nwhere:\np = -b/3a\nq = p³ + (bc-3ad)/(6a²)\nr = c/3a\n"
+    imaginary = False
 
-        #find p
+    solution = "x = ³√(q + √(q² + (r - p²)³))  +  ³√(q - √(q² + (r - p²)³))  +  p\nwhere:\np = -b/3a\nq = p³ + (bc-3ad)/(6a²)\nr = c/3a\n"
 
-        solution = solution + "\np = -{}/3({})".format(b,a)
+    #find p
 
-        p = -(b)/(3*a)
+    solution = solution + "\np = -{}/3({})".format(b,a)
 
-        solution = solution + "\np = {}\n".format(p)
+    p = -(b)/(3*a)
 
-        #find q
+    solution = solution + "\np = {}\n".format(p)
 
-        solution = solution + "\nq = ({})³ + (({})({}) - 3({})({}))/(6({})²)".format(p,b,c,a,d,a)
+    #find q
 
-        s0 = p**3
+    solution = solution + "\nq = ({})³ + (({})({}) - 3({})({}))/(6({})²)".format(p,b,c,a,d,a)
 
-        s1 = b*c
+    s0 = p**3
 
-        s2 = 3*a*d
+    s1 = b*c
 
-        s3 = a**2
+    s2 = 3*a*d
 
-        solution = solution + "\nq = {} + ({}-{})/(6({}))".format(s0,s1,s2,s3)
+    s3 = a**2
 
-        s4 = s1 - s2
+    solution = solution + "\nq = {} + ({}-{})/(6({}))".format(s0,s1,s2,s3)
 
-        s5 = 6*s3
+    s4 = s1 - s2
 
-        solution = solution + "\nq = {} + {}/{}".format(s0,s4,s5)
+    s5 = 6*s3
 
-        q = s0 + (s4/s5)
+    solution = solution + "\nq = {} + {}/{}".format(s0,s4,s5)
 
-        solution = solution + "\nq = {}\n".format(q)
+    q = s0 + (s4/s5)
 
-        #find r
+    solution = solution + "\nq = {}\n".format(q)
 
-        solution = solution +"\nr = {}/3({})".format(c,a)
+    #find r
 
-        s6 = 3*a
+    solution = solution +"\nr = {}/3({})".format(c,a)
 
-        solution = solution + "\nr = {}/{}".format(c,s6)
+    s6 = 3*a
 
-        r = c/s6
+    solution = solution + "\nr = {}/{}".format(c,s6)
 
-        solution = solution + "\nr = {}\n".format(r)
+    r = c/s6
 
-        #solve for x
+    solution = solution + "\nr = {}\n".format(r)
 
-        solution = solution + "\nx = ³√({} + √(({})² + ({} - ({})²)³))  +  ³√({} - √(({})² + ({} - ({})²)³))  +  {}".format(q,q,r,p,q,q,r,p,p)
+    #solve for x
 
-        s7 = q**2
+    solution = solution + "\nx = ³√({} + √(({})² + ({} - ({})²)³))  +  ³√({} - √(({})² + ({} - ({})²)³))  +  {}".format(q,q,r,p,q,q,r,p,p)
 
-        s8 = p**2
-        
-        #good luck, 19/3/2019
+    s7 = q**2
 
-        solution = solution + "\nx = ³√({} + √({} + ({} - {})³))  +  ³√({} - √({} + ({} - {})³))  +  {}".format(q,s7,r,s8,q,s7,r,s8,p)
+    s8 = p**2
 
-        s9 = r - s8
+    #good luck, 19/3/2019
 
-        s10 = s9**3
+    solution = solution + "\nx = ³√({} + √({} + ({} - {})³))  +  ³√({} - √({} + ({} - {})³))  +  {}".format(q,s7,r,s8,q,s7,r,s8,p)
 
-        solution = solution + "\nx = ³√({} + √({} + {}))  +  ³√({} - √({} + {}))  +  {}".format(q,s7,s10,q,s7,s10,p)
+    s9 = r - s8
 
-        unreal = False
-        
-        try:
-            s11 = math.sqrt(s7 + s10)
-        except ValueError:
-            print("error, sqr({}+{}) is unreal".format(s7,s10))
-            s11 = "i"
-            unreal = True
-            
-        solution = solution + "\nx = ³√({} + {})  +  ³√({} - {})  +  {}".format(q,s11,q,s11,p)
+    s10 = s9**3
 
-        if unreal == True:
-            await ctx.send(solution)
-        else:
-            s12 = numpy.cbrt(q + s11)
+    solution = solution + "\nx = ³√({} + √({} + {}))  +  ³√({} - √({} + {}))  +  {}".format(q,s7,s10,q,s7,s10,p)
 
-            s13 = numpy.cbrt(q - s11)
+    try:
+        s11 = math.sqrt(s7 + s10)
+    except ValueError:
+        print("error, sqr({}+{}) is unreal".format(s7,s10))
+        s11 = "i"
+        imaginary = True
 
-            solution = solution + "\nx = {}  +  {}  +  {}".format(s12,s13,p)
+    solution = solution + "\nx = ³√({} + {})  +  ³√({} - {})  +  {}".format(q,s11,q,s11,p)
 
-            x = s12 + s13 + p
-        
-            await ctx.send(solution)
+    if imaginary == True:
+        await ctx.send(solution)
+    else:
+        s12: float = numpy.cbrt(q + s11)  # type: ignore
 
-            await ctx.send("solution is {}".format(x))
+        s13: float = numpy.cbrt(q - s11)  # type: ignore
+
+        solution = solution + "\nx = {}  +  {}  +  {}".format(s12,s13,p)
+
+        x = s12 + s13 + p
+
+        await ctx.send(solution)
+
+        await ctx.send("solution is {}".format(x))
 
 
-def setup(crdbot):
-
-    crdbot.add_cog(MathCommands(crdbot))
+def setup(crdbot: commands.Bot):
+    crdbot.add_command(quadratic)
+    crdbot.add_command(cubic)
