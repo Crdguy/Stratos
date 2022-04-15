@@ -6,84 +6,118 @@ import random
 import discord
 from discord.ext import commands
 
-emojis = [':zero:', ':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:', ':bomb:']
+emojis = (':zero:', ':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:')
+bomb = ":bomb:"
 
-def make_grid(size: int) -> list[list[str]]:
-    """Generates a grid given two inputs n and m,
-    where n is the size of the grid in the x coordinate
-    and m is the size of the grid in the y coordinate"""
 
-    return [[""] * size for _ in range(size)]
+class Minesweeper:
+    """Represents a single minesweeper board."""
 
-def print_grid(grid: list[list[str]]) -> str:
-    """Formats the grid into a string"""
-    return "\n".join(map("".join, grid))
+    emojis = (':zero:', ':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:')
+    bomb = ":bomb:"
 
-def print_spoiler_grid(grid: list[list[str]]) -> str:
-    """Formats the grid into a string, with spoilers added"""
-    return "\n".join("".join(f"||{cell}||" for cell in row) for row in grid)
+    def __init__(self, size: int) -> None:
+        self.grid = tuple([""] * size for _ in range(size))
 
-def plant_mines(grid: list[list[str]], coeffs: tuple[float, float]) -> int:
-    """Does the mine planting logic. Returns the number of mines planted."""
-    lower, upper = coeffs
+    def print(self) -> str:
+        """Formats the grid into a string"""
+        return "\n".join(map("".join, self.grid))
 
-    size = len(grid)
+    def print_spoilered(self) -> str:
+        """Formats the grid into a string, with spoilers added"""
+        return "\n".join("".join(f"||{cell}||" for cell in row) for row in self.grid)
 
-    cells = size ** 2
+    def plant_mines_(self, coeffs: tuple[float, float]) -> int:
+        """Does the mine planting logic. Returns the number of mines planted."""
+        lower, upper = coeffs
+        size = len(self.grid)
+        cells = size ** 2
 
-    # generates a random number where 10% of total tiles <= mineno <= 30% of total tiles
-    mines = round(random.uniform(lower * cells, upper * cells))
+        mines = round(random.uniform(lower * cells, upper * cells))
 
-    for _ in range(mines):
-        while True:
-            x = random.randrange(0, size)
-            y = random.randrange(0, size)
+        for _ in range(mines):
+            while True:
+                x = random.randrange(0, size)
+                y = random.randrange(0, size)
 
-            if grid[y][x] != emojis[-1]:
-                grid[y][x] = emojis[-1]
-                break
+                if self.grid[y][x] != bomb:
+                    self.grid[y][x] = bomb
+                    break
 
-    return mines
+        return mines
 
-def check_surrondings(grid: list[list[str]], x: int, y: int) -> int:
-    """Returns number of bombs surrounding a given cell."""
-    n = 0
+    def plant_mines(self, coeffs: tuple[float, float]) -> int:
+        """Does the mine planting logic. Returns the number of mines planted."""
+        size = len(self.grid)
+        chance = random.uniform(*coeffs)
 
-    if x == 0:
-        all_x = (0, 1)
+        bombs = 0
 
-    elif x == len(grid)-1:
-        all_x = (x-1, x)
+        for y in range(size):
+            for x in range(size):
+                if random.random() < chance:
+                    self.grid[y][x] = bomb
+                    bombs += 1
 
-    else:
-        all_x = (x-1, x, x+1)
+        return bombs
 
-    if y == 0:
-        all_y = (0, 1)
+    def check_surroundings(self, x: int, y: int) -> int:
+        """Returns number of bombs surrounding a given cell."""
+        if x == 0:
+            all_x = (0, 1)
 
-    elif y == len(grid)-1:
-        all_y = (y-1, y)
+        elif x == len(self.grid)-1:
+            all_x = (x-1, x)
 
-    else:
-        all_y = (y-1, y, y+1)
+        else:
+            all_x = (x-1, x, x+1)
 
-    for px in all_x:
-        for py in all_y:
-            if px == x and py == y:
-                continue
+        if y == 0:
+            all_y = (0, 1)
 
-            if grid[py][px] == emojis[-1]:
-                n += 1
+        elif y == len(self.grid)-1:
+            all_y = (y-1, y)
 
-    return n
+        else:
+            all_y = (y-1, y, y+1)
 
+        n = 0
+
+        for px in all_x:
+            for py in all_y:
+                if px == x and py == y:
+                    continue
+
+                if self.grid[py][px] == bomb:
+                    n += 1
+
+        return n
+
+    def fill_numbers(self) -> None:
+        """Fills the remaining space in the grid with numbers."""
+        for y, row in enumerate(self.grid):
+            for x, cell in enumerate(row):
+                if cell != bomb:
+                    bombs = self.check_surroundings(x, y)
+                    self.grid[y][x] = emojis[bombs]
+
+    def generate(self, coeffs: tuple[float, float]) -> int:
+        """Shorthand for .plant_mines(coeffs) followed by .fill_numbers().
+        Returns the number of mines planted."""
+
+        mines = self.plant_mines(coeffs)
+        self.fill_numbers()
+        return mines
+
+# fmt: off
 diff_map = dict(
-    easy  =(0.1, 0.2),
+    easy  =(0.1,  0.2),
     normal=(0.15, 0.3),
     medium=(0.15, 0.3),
-    hard  =(0.2, 0.4),
-    expert=(0.3, 0.475),
-    death =(0.4, 0.65))
+    hard  =(0.2,  0.4),
+    expert=(0.3,  0.475),
+    death =(0.4,  0.65))
+# fmt: on
 
 
 @commands.command()
@@ -92,7 +126,7 @@ async def minesweeper(ctx: commands.Context, size: int = 8, difficulty: str = "n
     Minesweeper.py by Chris Dance.
     Reformatted by Eneg.
 
-    Version: 0.2.0
+    Version: 0.2.1
 
     release = final version for a while
     major = large update
@@ -121,21 +155,14 @@ async def minesweeper(ctx: commands.Context, size: int = 8, difficulty: str = "n
         else:
             raise commands.UserInputError("Invalid difficulty passed.")
 
-    grid = make_grid(size)
-
-    total_mines = plant_mines(grid, dif)
-
-    for y, row in enumerate(grid):
-        for x, cell in enumerate(row):
-            if cell != emojis[-1]:
-                bombs = check_surrondings(grid, x, y)
-                grid[y][x] = emojis[bombs]
+    field = Minesweeper(size)
+    total_mines = field.generate(dif)
 
     embed = discord.Embed(
         title=f"{size}x{size} grid Minesweeper game, requested by {ctx.message.author}\n"
               f"{total_mines} mines\n"
               f"**{difficulty.capitalize()}** Mode",
-        description=print_spoiler_grid(grid),
+        description=field.print_spoilered(),
         colour=ctx.author.color)
 
     embed.set_footer(
@@ -158,9 +185,10 @@ async def minesweeper(ctx: commands.Context, size: int = 8, difficulty: str = "n
     except asyncio.TimeoutError:
         return
 
-    embed.description = print_grid(grid)
+    embed.description = field.print()
     embed.title = (f"{size}x{size} grid Minesweeper game, requested by {ctx.author}\n"
-                   f"{total_mines} mines\n**{difficulty.capitalize()}** Mode\n"
+                   f"{total_mines} mines\n"
+                   f"**{difficulty.capitalize()}** Mode\n"
                    f"Given up! Field has been revealed.")
     await msg.edit(embed=embed)
 
