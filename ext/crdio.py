@@ -1,93 +1,48 @@
-from discord.ext import commands
-import discord
 import asyncio
 
-class Crdio(commands.Cog):
-    
-    def __init__(self, crdbot):
-        self.crdbot = crdbot
-    
+import discord
+from discord.ext import commands
 
-    @commands.command(pass_context=True)
-    async def crdio(self, ctx):
-        msg = await ctx.send("Seriously? React with \U0001F914 to proceed.")
 
+@commands.command()
+@commands.guild_only()
+async def crdio(ctx: commands.Context) -> None:
+    funnies = [
+        "Seriously? React with \U0001F914 to proceed.",
+        "Okay. I just want to warn you this is the suicide command. If you continue through with this command, you will kick yourself. React with \U0001F914 to proceed.",
+        f"Jesus Christ, calm down there {ctx.author}. Let's not be so hasty. I'm being dead serious, this command will **ACTUALLY** kick you. You should stop now.",
+        "Bloody hell. Okay, you have been warned. This is past my control now, and by reacting with \U0001F914 you confirm your demise."
+        " This is the last warning. This is not a joke. If you react, you are kicked. Game over."
+        " You'll have to go find another server invite, and everyone will laugh at you for getting yourself kicked over such a stupid thing."
+        " But if you're really this thickheaded... again... you may proceed, by reacting \U0001F914."]
+
+    for text in funnies:
+        msg = await ctx.send(text)
         await msg.add_reaction("\U0001F914")
-        
-        #passed = False
-        while msg:
-            await self.crdbot.wait_for("reaction_add", check = lambda reaction, user:reaction.emoji == "\U0001F914")
-            msg2 = await ctx.fetch_message(msg.id)
-            
-            reactsO = msg2.reactions
 
-            async for y in reactsO[0].users():
-                
-                if ctx.message.author == y:
-                    
-                    msg3 = await ctx.send("Okay. I just want to warn you this is the suicide command. If you continue through with this command, you will kick yourself. React with \U0001F914 to proceed.")
-                    await msg3.add_reaction("\U0001F914")
-                    msg1 = False
-                    msg2 = False
+        try:
+            await ctx.bot.wait_for(
+                "reaction_add",
+                check=lambda reaction, user: user == ctx.author and str(reaction.emoji) == "\U0001F914",
+                timeout=600)
 
-                    while msg3:
-                        await self.crdbot.wait_for("reaction_add", check = lambda reaction, user:reaction.emoji == "\U0001F914")
-                        msg4 = await ctx.fetch_message(msg3.id)
-                        
-                        reactsO2 = msg4.reactions
+        except asyncio.TimeoutError:
+            await ctx.send("I've decided to spare you.")
+            return
 
-                        async for y in reactsO2[0].users():
-                            
-                            
-                            if ctx.message.author == y:
+    await ctx.send("Welp. Don't say I didn't warn ya. Kicking in 20 seconds, you may say your last goodbyes (or beg someone to shut me down, maybe)")
+    await asyncio.sleep(10)
+    await ctx.send("You thought I was kidding, didn't you? Let this be a lesson to trust the funny bot.")
+    await asyncio.sleep(10)
 
-                                msg5 = await ctx.send("Jesus Christ, calm down there {}. Let's not be so hasty. I'm being dead serious, this command will **ACTUALLY** kick you. You should stop now.".format(ctx.message.author))
-                                await msg5.add_reaction("\U0001F914")
-                                msg3 = False
-                                msg4 = False                            
+    assert ctx.guild is not None
 
-                                while msg5:
-                                        await self.crdbot.wait_for("reaction_add", check = lambda reaction, user:reaction.emoji == "\U0001F914")
-                                        msg6 = await ctx.fetch_message(msg5.id)
-                                        
-                                        reactsO3 = msg6.reactions
+    try:
+        await ctx.guild.kick(ctx.author, reason="Got memed by ;crdio")
 
-                                        async for y in reactsO3[0].users():
-                                            
-                                            
-                                            if ctx.message.author == y:
-
-                                                msg7 = await ctx.send("Bloody hell. Okay, you have been warned. This is past my control now, and by reacting with \U0001F914 you confirm your demise. This is the last warning. This is not a joke. If you react, you are kicked. Game over. You'll have to go find another server invite, and everyone will laugh at you for getting yourself kicked over such a stupid thing. But if you're really this thickheaded... again... you may proceed, by reacting \U0001F914.")
-                                                await msg7.add_reaction("\U0001F914")
-                                                msg5 = False
-                                                msg6 = False  
-        
-                                                while msg7:
-                                                    
-                                                        await self.crdbot.wait_for("reaction_add", check = lambda reaction, user:reaction.emoji == "\U0001F914")
-                                                        msg8 = await ctx.fetch_message(msg7.id)
-                                                        
-                                                        reactsO4 = msg8.reactions
-
-                                                        async for y in reactsO4[0].users():
-                                                            
-                                                            
-                                                            if ctx.message.author == y:
-                                                    
-                                                                await ctx.send("Welp. Don't say I didn't warn ya. Kicking in 20 seconds, you may say your last goodbyes (or beg someone to shut me down, maybe)")
-                                                                msg7 = False
-                                                                msg8 = False  
-
-                                                                await asyncio.sleep(10)
-                                                                await ctx.send("You thought I was kidding, didn't you? Let this be a lesson to trust the funny bot.")
-                                                                await asyncio.sleep(10)
-                                                                
-                                                                try:
-                                                                    await ctx.guild.kick(discord.Object(id=ctx.author.id),reason="Got memed by ;crdio")
-                                                                except:
-                                                                    await ctx.send("Ah. Looks like I lack the permissions to kick you. Better luck next time.")
+    except (discord.Forbidden, discord.HTTPException):
+        await ctx.send("Ah. Looks like I lack the permissions to kick you. Better luck next time.")
 
 
-def setup(crdbot):
-
-    crdbot.add_cog(Crdio(crdbot))
+def setup(crdbot: commands.Bot):
+    crdbot.add_command(crdio)

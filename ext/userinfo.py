@@ -1,194 +1,70 @@
-from discord.ext import commands
-import discord
-import asyncio
 import datetime
-import aiohttp
+from typing import Union
 
-class Userinfo(commands.Cog):
-    
-    def __init__(self, crdbot):
-        self.crdbot = crdbot
-        
-    @commands.command()
-    async def userinfo(self, ctx, *args):
+import discord
+from discord.ext import commands
 
-        channel = ctx.message.channel
+
+@commands.command()
+async def userinfo(
+    ctx: commands.Context,
+    user: Union[discord.Member, discord.User, None] = None,
+    channel: Union[discord.TextChannel, None] = None
+) -> None:
+    """Sends info about the user."""
+
+    if user is None:
         user = ctx.message.author
 
-        for arg in args:
-
-            #oarg = arg
-            #print(arg," input")
-            try:
-                #identify an argument as a channel (working as of 11/11/2020)
-                argchannel = int(arg[2:len(arg)-1])
-            except:
-                argchannel = None
-
-            try:
-            #if True:
-                #identify a user by given ID, first checks the guild to see if the user is in the server and then tries an API call if not (working as of 11/2/2020)
-       
-                try:
-                    t_user = await ctx.guild.fetch_member(int(arg))
-                    
-                except:
-                    t_user = await self.crdbot.fetch_user(int(arg))
-
-                if t_user != None:
-                    user = t_user
-  
-                
-            except:
-                pass
-                
-            try:
-                #identify a user by mention, first checks the guild to see if the user is in it and then tries an API call if not (not working as of 20/11/2020)
-                argmember = int(arg[3:len(arg)-1])
-
-                try:
-                    
-                    t_user = await ctx.guild.fetch_member(argmember)
-                    
-                except:
-                    
-                    t_user = await self.crdbot.fetch_user(argmember)
-                    
-                if isinstance(t_user, discord.Member):
-                    user = t_user
-
-                #print(t_user)
-            except:
-                pass
-
-            #print("user is: "+str(user))
-            t_channel = ctx.guild.get_channel(argchannel)
-            if isinstance(t_channel, discord.TextChannel):
-                channel = t_channel
-
-        #print("channel:{}".format(channel))
-        #print("member:{}".format(user))
-        
-        om1 = False
-        #userid = ctx.message.content[10:len(ctx.message.content)]
-        '''
-        if "-om1" in userid:
-            if str(ctx.message.author.id) == "186069912081399808":
-                userid = userid[6:len(userid)]
-                om1 = True
-            else:
-                await ctx.send("Nope.")
-            
-        if ctx.message.mentions:
-            user = ctx.message.mentions[0]
-        
-        
-        elif userid:
-            user = ctx.guild.get_member(int(userid))
-            print(user)
-
-        else:
-            user = ctx.message.author
-
-        '''
-        #get activity
-        do_activity = True
-        #manual override for this statistic to be displayed or not
-
-        if do_activity == True:
-            try:
-                if om1 == True:
-                    messages = await channel.history(limit=10000).flatten()#await ctx.message.channel.history(limit=10000).flatten()
-                else:
-                    messages = await channel.history(limit=1000).flatten()#ctx.message.channel.history(limit=1000).flatten()
-            except discord.errors.Forbidden:
-                await ctx.send("Error, missing permissions to read {}.".format(channel))
-                return
-
-            #get history statistics
-            
-            messageCount = 0
-            for message in messages:
-                if message.author == user:
-                    messageCount = messageCount + 1
-            if om1 == True:
-                activity = messageCount/100
-            else:
-                activity = messageCount/10
-        else:
-            activity = "Feature disabled for performance"
-            
-        rolestring = "\n"
-        not_in_server = False
-        
+    if channel is not None:
         try:
-            for role in user.roles:
-                rolestring = rolestring + str(role.mention) + "\n"
-        except:
-            rolestring = None
-            not_in_server = True
+            messages = await channel.history(limit=1000).flatten()
 
-        try:
-            joindays = str((datetime.datetime.utcnow() - user.joined_at).days)[0:19]
-            jointime = str(user.joined_at).replace(" "," at ")[0:19] + " (UTC+0) ({} days ago)".format(joindays)
-        except:
-            jointime = None
-            joindays = None
-            
-            
-        #delta =  
-        emb = discord.Embed(title = "{}".format(user),
-        type = "rich",
-        colour = user.color
-        )
+        except discord.Forbidden:
+            await ctx.send(f"Missing permissions to read {channel}.")
+            return
 
-        if not_in_server:
-            emb.description = "**Account Creation Date**: {} ({} days ago)\nThis user is not in the server!".format(
-            (str(discord.utils.snowflake_time(user.id)).replace(" "," at "))[0:19] + " (UTC+0)",
-            str((datetime.datetime.utcnow() - discord.utils.snowflake_time(user.id)).days),
-            
-            )
-            
-            
-        else:
-            emb.description = "**Account Creation Date**: {} ({} days ago)\n**Join Date**: {}\n**Roles**: {}\n**Activity** (your messages per 1000 messages in {}): {}%\n".format(
-            (str(discord.utils.snowflake_time(user.id)).replace(" "," at "))[0:19] + " (UTC+0)",
-            str((datetime.datetime.utcnow() - discord.utils.snowflake_time(user.id)).days),
-            jointime,
-            rolestring,
-            "#"+str(channel),
-            activity
-            )   
-        '''
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}".format(user)) as r:
-                if r.status == 200:
-                    file = await r.read()
-                    #print(file)
-                    with open("input.png", "wb") as f:
-                        f.write(file)
-        '''
-        #print("ok")
-        emb.set_thumbnail(url="https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}".format(user))#"attachment://input.png")
-        #f = discord.File("input.png", filename="input.png")
-        await ctx.send(embed=emb)#, file=f)
-        '''
+        message_count = 0
+
+        for message in messages:
+            if message.author.id == user.id:
+                message_count += 1
+
+        activity = (
+            f"\n**Activity** (your messages per {len(messages)} messages"
+            f" in #{channel}): {message_count / len(messages):.1%}")
+
+    else:
+        activity = ""
+
+    desc = (
+        f"**Account Creation Date**: {user.created_at:%Y-%m-%d at %H:%M} (UTC+0)"
+        f" ({(datetime.datetime.utcnow() - user.created_at).days} days ago)")
+
+    embed = discord.Embed(
+        title=f"{user}",
+        colour=user.color)
+    embed.set_thumbnail(url=str(user.avatar_url))
+
+    if isinstance(user, discord.Member):
+        assert user.joined_at is not None
+        # reverse and skip @everyone
+        roles = "\n".join(role.mention for role in user.roles[:0:-1]) or "None"
+        desc += (
+            f"\n**Join Date**: {user.joined_at:%Y-%m-%d at %H:%M} (UTC+0)"
+            f"({(datetime.datetime.utcnow() - user.joined_at).days} days ago)"
+            f"\n**Roles**:\n{roles}")
+
+        if activity:
+            desc += activity
+
+        embed.description = desc
+
+    else:
+        embed.description = desc + "\nThis user is not in the server!"
+
+    await ctx.send(embed=embed)
 
 
-            emb.set_image(url="attachment://output.png")
-            f = discord.File("output.png", filename="output.png")
-            endTime = int(round(time.time() * 1000))
-            emb.description = "Response time: {}ms\nImage generation time: {}ms".format(endTime-startTime,L2Presponsetime)
-            await ctx.send(file=f,embed=emb)
-        '''
-    #'''
-    @userinfo.error
-    async def userinfo_error(self, ctx, err):
-
-        if isinstance(err, commands.CommandInvokeError):
-            await ctx.send("Incorrect command format. See `;help userinfo`.")
-    #'''
-
-def setup(crdbot):
-
-    crdbot.add_cog(Userinfo(crdbot))
+def setup(crdbot: commands.Bot):
+    crdbot.add_command(userinfo)
